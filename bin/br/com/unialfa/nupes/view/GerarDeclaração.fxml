@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.embed.swing.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.*?>
+<?import com.jfoenix.validation.*?>
+<?import com.jfoenix.svg.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+
+<Pane prefHeight="514.0" prefWidth="701.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="137.0" layoutY="120.0" prefHeight="17.0" prefWidth="115.0" text="Professor(a) Leitor(a):" />
+      <Label layoutX="137.0" layoutY="80.0" prefHeight="17.0" prefWidth="115.0" text="Professor(a) Leitor(a):" />
+      <Label layoutX="137.0" layoutY="163.0" prefHeight="17.0" prefWidth="144.0" text="Professor(a) Orientador(a):" />
+      <JFXComboBox layoutX="282.0" layoutY="154.0" prefHeight="25.0" prefWidth="191.0" />
+      <JFXButton layoutX="313.0" layoutY="473.0" style="-fx-border-color: black;" text="Gerar Documento" />
+      <JFXComboBox layoutX="257.0" layoutY="111.0" prefHeight="25.0" prefWidth="191.0" />
+      <JFXComboBox layoutX="258.0" layoutY="71.0" prefHeight="25.0" prefWidth="191.0" />
+      <AnchorPane prefHeight="514.0" prefWidth="115.0" style="-fx-background-color: #8B0000;">
+         <children>
+            <JFXButton layoutX="28.0" layoutY="180.0" prefHeight="25.0" prefWidth="59.0" style="-fx-border-color: white;" text="Inicio" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <Separator layoutX="5.0" layoutY="223.0" prefHeight="4.0" prefWidth="101.0" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="302.0" layoutY="21.0" text="Gerar Declaração">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="137.0" layoutY="207.0" prefHeight="17.0" prefWidth="41.0" text="Curso:" />
+      <Label layoutX="137.0" layoutY="233.0" prefHeight="17.0" prefWidth="144.0" />
+      <Label layoutX="137.0" layoutY="257.0" prefHeight="17.0" prefWidth="59.0" text="Semestre:" />
+      <JFXComboBox layoutX="178.0" layoutY="203.0" prefHeight="25.0" prefWidth="191.0" />
+      <JFXComboBox layoutX="195.0" layoutY="253.0" prefHeight="25.0" prefWidth="150.0" />
+      <TableView layoutX="203.0" layoutY="297.0" prefHeight="165.0" prefWidth="349.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+   </children>
+</Pane>
