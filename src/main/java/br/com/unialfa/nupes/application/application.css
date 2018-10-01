@@ -1,1 +1,16 @@
-/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.botaoUsuario {
+	-fx-background-image:url("../image/Usuario.png")
+}
+.botaoCadastro{
+	-fx-background-image:url("../image/Cadastro.png")
+
+	}
+.botaoRelatorio{
+		-fx-background-image:url("../image/Relatorios.png")
+
+	}
+.botaoDocumento{
+	-fx-background-image:url("../image/Documentos.png")
+
+	}
+	
