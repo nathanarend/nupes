@@ -22,10 +22,10 @@
       </Pane>
       <Group layoutX="102.0" layoutY="185.0">
          <children>
-            <JFXButton minHeight="130.0" prefWidth="130.0" style="-fx-background-color: FF0040;" text="Cadastro" />
-            <JFXButton layoutX="147.0" minHeight="130.0" prefWidth="130.0" style="-fx-background-color: FF0040;" text="Usuário" />
-            <JFXButton layoutX="294.0" minHeight="130.0" prefWidth="130.0" style="-fx-background-color: FF0040;" text="Documentos" />
-            <JFXButton layoutX="441.0" minHeight="130.0" prefWidth="130.0" style="-fx-background-color: FF0040;" text="Relatórios" />
+            <JFXButton minHeight="130.0" prefWidth="130.0" style="-fx-background-color: FF0040;" text="Banca" />
+            <JFXButton layoutX="147.0" minHeight="130.0" prefWidth="130.0" style="-fx-background-color: FF0040;" text="Aluno(a)" />
+            <JFXButton layoutX="294.0" minHeight="130.0" prefWidth="130.0" style="-fx-background-color: FF0040;" text="Professor(a)" />
+            <JFXButton layoutX="441.0" minHeight="130.0" prefWidth="130.0" style="-fx-background-color: FF0040;" text="Curso" />
          </children>
       </Group>
    </children>

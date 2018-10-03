@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXTextField layoutX="13.0" layoutY="99.0" prefHeight="25.0" prefWidth="354.0" />
+      <Label layoutX="14.0" layoutY="79.0" text="Nome:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="213.0" layoutY="248.0" style="-fx-background-color: #C0C0C0; -fx-background-radius: 15; -fx-padding: 6;" text="Salvar" />
+      <Label layoutX="89.0" layoutY="43.0" text="Cadastrar Aluno(a)">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="123.0" layoutY="248.0" style="-fx-background-color: #C0C0C0; -fx-padding: 6; -fx-background-radius: 15;" text="Cancelar" />
+      <AnchorPane prefHeight="36.0" prefWidth="383.0" style="-fx-background-color: #5882FA;" />
+      <Label layoutX="14.0" layoutY="140.0" text="Matrícula:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXTextField layoutX="14.0" layoutY="164.0" prefHeight="25.0" prefWidth="354.0" />
+      <JFXComboBox layoutX="69.0" layoutY="203.0" prefHeight="25.0" prefWidth="301.0" />
+      <Label layoutX="16.0" layoutY="209.0" text="Curso:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
