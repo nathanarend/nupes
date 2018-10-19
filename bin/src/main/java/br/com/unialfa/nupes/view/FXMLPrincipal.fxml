@@ -15,10 +15,9 @@
 				<JFXButton layoutX="686.0" layoutY="9.0" style="-fx-background-color: #f2f2f2; -fx-padding: 6; -fx-background-radius: 15;" text="Deslogar" />
 			</children>
 		</Pane>
-		<Group layoutX="102.0" layoutY="185.0" />
-      <Button fx:id="btnCadastro" layoutX="99.0" layoutY="185.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="130.0" styleClass="botaoUsuario" stylesheets="@../application/application.css" />
-      <Button fx:id="btnCadastro1" layoutX="246.0" layoutY="185.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="130.0" styleClass="botaoCadastro" stylesheets="@../application/application.css" />
-      <Button fx:id="btnCadastro11" layoutX="393.0" layoutY="185.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="130.0" styleClass="botaoDocumento" stylesheets="@../application/application.css" />
-      <Button fx:id="btnCadastro111" layoutX="540.0" layoutY="185.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="130.0" styleClass="botaoRelatorio" stylesheets="@../application/application.css" />
+		<Group layoutX="14.0" layoutY="188.0" />
+      <Button fx:id="btnCadastro1" layoutX="158.0" layoutY="188.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="130.0" styleClass="botaoCadastro" stylesheets="@../application/application.css" />
+      <Button fx:id="btnCadastro11" layoutX="305.0" layoutY="188.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="130.0" styleClass="botaoDocumento" stylesheets="@../application/application.css" />
+      <Button fx:id="btnCadastro111" layoutX="452.0" layoutY="188.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="130.0" styleClass="botaoRelatorio" stylesheets="@../application/application.css" />
 	</children>
 </AnchorPane>
