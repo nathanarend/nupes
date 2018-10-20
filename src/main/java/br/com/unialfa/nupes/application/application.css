@@ -13,4 +13,15 @@
 	-fx-background-image:url("../image/Documentos.png")
 
 	}
-	
+.botaoAluno{
+		-fx-background-image:url("../image/Aluno.png")
+}
+.botaoProfessor{
+		-fx-background-image:url("../image/Professor.png")
+}
+.botaoBanca{
+		-fx-background-image:url("../image/Banca.png")
+}
+.botaoCurso{
+		-fx-background-image:url("../image/Cursos.png")
+}

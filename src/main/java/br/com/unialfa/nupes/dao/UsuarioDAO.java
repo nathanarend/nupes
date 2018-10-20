@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 //CLASSE NO QUAL IRÁ SALVAR O USUARIO NO BANCO. **********TELA AINDA NÃO IMPLEMENTADA.***************
 //Ps: Thiago.
-public class UsuarioDAO {
+public class UsuarioDAO extends {
 	private ModuloConexao connection = null;
 	private Connection con;
 	private Statement stmt = null;
