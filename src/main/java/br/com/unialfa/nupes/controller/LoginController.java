@@ -10,7 +10,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
-import br.com.unialfa.nupes.dao.ModuloConexao;
+import br.com.unialfa.nupes.configuration.ModuloConexao;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
