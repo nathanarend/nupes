@@ -1,10 +1,8 @@
 package br.com.unialfa.nupes.dao;
 
-public interface DAOInterface<T> {
-	public void salvar(T obj);
+import br.com.unialfa.nupes.entity.Aluno;
 
-	public void Consultar(Integer id);
-
-	public void limpar(T obj);
+public interface DAOInterface {
+	public void salvar(Aluno aluno);
 
 }
