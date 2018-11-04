@@ -2,6 +2,9 @@ package br.com.unialfa.nupes.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -10,6 +13,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
+import br.com.unialfa.nupes.configuration.ModuloConexao;
 import br.com.unialfa.nupes.dao.AlunoDAO;
 import br.com.unialfa.nupes.dao.DAOInterface;
 import br.com.unialfa.nupes.entity.Aluno;
@@ -36,10 +40,12 @@ public class CadastroAlunoController implements Initializable {
 	private JFXComboBox<EnumCurso> cbCurso;
 	AlunoDAO aluno = new AlunoDAO();
 	Aluno a = new Aluno();
+	Curso c = new Curso();
 
 	void pegaEnums() {
 		cbCurso.getItems().add(null);
 		cbCurso.getItems().addAll(EnumCurso.values());
+		
 	}
 
 	@Override
@@ -48,15 +54,20 @@ public class CadastroAlunoController implements Initializable {
 
 	}
 
-	private void catchvalues(Aluno a) {
+	
+
+	private void catchvalues(Aluno a, Curso c) {
 		a.setNome(txtNome.getText());
-		a.setMatricula(Integer.parseInt(txtMatricula.getText()));
-		cbCurso.getSelectionModel().getSelectedItem();
+		a.setMatricula(txtMatricula.getText());
+		c.setCurso(cbCurso.getValue());
+		
+		
 	}
 
 	@FXML
-	private void save() throws IOException {
-		catchvalues(a);
-		aluno.salvar(a);
+	private void save(ActionEvent event) throws SQLException {
+		catchvalues(a, c);
+		aluno.salvar(a,c);
+
 	}
 }

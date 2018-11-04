@@ -44,7 +44,7 @@ public class LoginController {
 
 	@FXML
 	void logar() {
-		String sql = "SELECT usuario,senha FROM usuario WHERE usuario=? AND senha=?";
+		String sql = "SELECT matricula,senha FROM usuario WHERE matricula=? AND senha=?";
 		try {
 			con = ModuloConexao.GetConnection();
 			pst = con.prepareStatement(sql);
