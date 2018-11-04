@@ -2,33 +2,24 @@ package br.com.unialfa.nupes.entity;
 
 public class Pessoa extends Curso {
 
-	int id;
-	int matricula;
+	String matricula;
 	String nome;
 
 	public Pessoa() {
 	}
 
-	public Pessoa(int id, int matricula, String nome) {
-		this.id = id;
+	public Pessoa(String matricula, String nome) {
+
 		this.matricula = matricula;
 		this.nome = nome;
 
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getMatricula() {
+	public String getMatricula() {
 		return matricula;
 	}
 
-	public void setMatricula(int matricula) {
+	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
 

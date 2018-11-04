@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class PrincipalController {
+
 	@FXML
 	private AnchorPane PanePrincipal;
 
@@ -29,6 +30,9 @@ public class PrincipalController {
 
 	@FXML
 	private Button btnRelatorio;
+
+	@FXML
+	private Button btnCadCurso;
 
 	@FXML
 	void cadastrar(ActionEvent event) throws IOException {
@@ -56,4 +60,15 @@ public class PrincipalController {
 
 	}
 
+	@FXML
+	void cadCurso(ActionEvent event) throws IOException {
+		Stage stage = new Stage();
+		AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("../view/FXMLCadastroCurso.fxml"));
+		Scene scene = new Scene(root);
+		stage.setTitle("Cadastro Aluno.");
+		stage.setScene(scene);
+		stage.show();
+	
+
+	}
 }

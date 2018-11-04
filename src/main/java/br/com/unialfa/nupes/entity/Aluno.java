@@ -1,25 +1,36 @@
 package br.com.unialfa.nupes.entity;
 
-public class Aluno extends Pessoa{
+import br.com.unialfa.nupes.enumerator.EnumCurso;
 
-	int id;
-	int periodo;
+public class Aluno extends Pessoa {
+
+	private String matricula;
+	private int periodo;
+	private int id_curso;
+
+	public String getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+
+	public int getId_curso() {
+		return id_curso;
+	}
+
+	public void setId_curso(int id_curso) {
+		this.id_curso = id_curso;
+	}
 
 	public Aluno() {
-
 	}
 
-	public Aluno(int id, int periodo) {
+	public Aluno(int id_curso, int periodo) {
 		this.periodo = periodo;
-		this.id = id;
-	}
+		this.id_curso = id_curso;
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public int getPeriodo() {
@@ -29,4 +40,5 @@ public class Aluno extends Pessoa{
 	public void setPeriodo(int periodo) {
 		this.periodo = periodo;
 	}
+
 }

@@ -19,7 +19,7 @@
             <JFXButton minHeight="134.0" prefWidth="134.0" styleClass="botaoBanca" stylesheets="@../application/application.css" text=" " />
             <JFXButton layoutX="147.0" minHeight="134.0" onAction="#cadAluno" prefWidth="134.0" styleClass="botaoAluno" stylesheets="@../application/application.css" text=" " />
             <JFXButton layoutX="294.0" minHeight="134.0" prefHeight="131.0" prefWidth="134.0" styleClass="botaoProfessor" stylesheets="@../application/application.css" text=" " />
-            <JFXButton layoutX="441.0" minHeight="134.0" prefWidth="134.0" style="-fx-background-color: FF0;" styleClass="botaoCurso" stylesheets="@../application/application.css" text=" " />
+            <JFXButton fx:id="btnCadCurso" layoutX="441.0" minHeight="134.0" onAction="#cadCurso" prefWidth="134.0" style="-fx-background-color: FF0;" styleClass="botaoCurso" stylesheets="@../application/application.css" text=" " />
          </children>
       </Group>
    </children>
