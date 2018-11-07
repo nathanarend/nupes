@@ -45,7 +45,7 @@ public class CadastroAlunoController implements Initializable {
 	void pegaEnums() {
 		cbCurso.getItems().add(null);
 		cbCurso.getItems().addAll(EnumCurso.values());
-		
+
 	}
 
 	@Override
@@ -54,20 +54,17 @@ public class CadastroAlunoController implements Initializable {
 
 	}
 
-	
-
 	private void catchvalues(Aluno a, Curso c) {
 		a.setNome(txtNome.getText());
 		a.setMatricula(txtMatricula.getText());
 		c.setCurso(cbCurso.getValue());
-		
-		
+
 	}
 
 	@FXML
 	private void save(ActionEvent event) throws SQLException {
 		catchvalues(a, c);
-		aluno.salvar(a,c);
+		aluno.salvar(a, c);
 
 	}
 }
