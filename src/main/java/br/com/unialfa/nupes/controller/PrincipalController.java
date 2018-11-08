@@ -32,7 +32,7 @@ public class PrincipalController {
 	private Button btnRelatorio;
 
 	@FXML
-	private Button btnCadCurso;
+	private Button btnCadCurso,btnCadProfessor;
 
 	@FXML
 	void cadastrar(ActionEvent event) throws IOException {
@@ -61,9 +61,9 @@ public class PrincipalController {
 	}
 
 	@FXML
-	void cadCurso(ActionEvent event) throws IOException {
+	void CadProfessor(ActionEvent event) throws IOException {
 		Stage stage = new Stage();
-		AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("../view/FXMLCadastroCurso.fxml"));
+		AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("../view/FXMLCadastroProfessor.fxml"));
 		Scene scene = new Scene(root);
 		stage.setTitle("Cadastro Aluno.");
 		stage.setScene(scene);
@@ -71,4 +71,5 @@ public class PrincipalController {
 	
 
 	}
+	
 }
