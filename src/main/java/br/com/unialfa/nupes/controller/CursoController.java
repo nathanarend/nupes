@@ -29,6 +29,5 @@ public class CursoController {
 	@FXML
 	void salvar(ActionEvent event) throws IOException {
 		catchValues(c);
-		curso.salvar(c);
 	}
 }

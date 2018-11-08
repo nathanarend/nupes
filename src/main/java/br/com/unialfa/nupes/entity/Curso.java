@@ -1,12 +1,22 @@
 package br.com.unialfa.nupes.entity;
 
 import br.com.unialfa.nupes.enumerator.EnumCurso;
+import br.com.unialfa.nupes.enumerator.EnumPeriodo;
 import javafx.beans.property.ObjectProperty;
 
 public class Curso {
 	int id_curso;
 	String nome;
 	EnumCurso curso;
+	EnumPeriodo periodod;
+
+	public EnumPeriodo getPeriodod() {
+		return periodod;
+	}
+
+	public void setPeriodo(EnumPeriodo periodod) {
+		this.periodod = periodod;
+	}
 
 	public EnumCurso getCurso() {
 		return curso;
@@ -32,17 +42,6 @@ public class Curso {
 		this.nome = nome;
 	}
 
-	/*
-	 * public void setCurso(ObjectProperty<EnumCurso> curso) { this.curso = curso; }
-	 * 
-	 * private ObjectProperty<EnumCurso> curso;
-	 * 
-	 * public final ObjectProperty<EnumCurso> cursoProperty() { return this.curso; }
-	 * 
-	 * public final EnumCurso getCurso() { return this.cursoProperty().get(); }
-	 * 
-	 * public final void setCurso(final EnumCurso curso) {
-	 * this.cursoProperty().set(curso); }
-	 */
+
 
 }

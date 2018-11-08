@@ -1,25 +1,18 @@
 package br.com.unialfa.nupes.controller;
 
-import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
-import javax.swing.JOptionPane;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
-import br.com.unialfa.nupes.configuration.ModuloConexao;
 import br.com.unialfa.nupes.dao.AlunoDAO;
-import br.com.unialfa.nupes.dao.DAOInterface;
 import br.com.unialfa.nupes.entity.Aluno;
 import br.com.unialfa.nupes.entity.Curso;
-import br.com.unialfa.nupes.entity.Pessoa;
 import br.com.unialfa.nupes.enumerator.EnumCurso;
+import br.com.unialfa.nupes.enumerator.EnumPeriodo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -38,19 +31,25 @@ public class CadastroAlunoController implements Initializable {
 	private JFXTextField txtMatricula;
 	@FXML
 	private JFXComboBox<EnumCurso> cbCurso;
+	@FXML
+	private JFXComboBox<EnumPeriodo> cbPeriodo;
 	AlunoDAO aluno = new AlunoDAO();
 	Aluno a = new Aluno();
 	Curso c = new Curso();
 
+	
 	void pegaEnums() {
 		cbCurso.getItems().add(null);
+		cbPeriodo.getItems().add(null);
 		cbCurso.getItems().addAll(EnumCurso.values());
+		cbPeriodo.getItems().addAll(EnumPeriodo.values());
 
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		pegaEnums();
+		
 
 	}
 
@@ -58,6 +57,7 @@ public class CadastroAlunoController implements Initializable {
 		a.setNome(txtNome.getText());
 		a.setMatricula(txtMatricula.getText());
 		c.setCurso(cbCurso.getValue());
+		c.setPeriodo(cbPeriodo.getValue());
 
 	}
 

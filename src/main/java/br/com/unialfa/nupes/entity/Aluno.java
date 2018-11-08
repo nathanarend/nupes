@@ -5,7 +5,7 @@ import br.com.unialfa.nupes.enumerator.EnumCurso;
 public class Aluno extends Pessoa {
 
 	private String matricula;
-	private int periodo;
+
 	private int id_curso;
 
 	public String getMatricula() {
@@ -27,18 +27,9 @@ public class Aluno extends Pessoa {
 	public Aluno() {
 	}
 
-	public Aluno(int id_curso, int periodo) {
-		this.periodo = periodo;
+	public Aluno(int id_curso) {
 		this.id_curso = id_curso;
 
-	}
-
-	public int getPeriodo() {
-		return periodo;
-	}
-
-	public void setPeriodo(int periodo) {
-		this.periodo = periodo;
 	}
 
 }
