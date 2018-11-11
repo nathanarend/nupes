@@ -23,7 +23,7 @@
       </ImageView>
       <ImageView fx:id="imgUnialfa" fitHeight="171.0" fitWidth="455.0" layoutX="139.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../image/unialfalogo.png" />
+            <Image url="@../image/Unialfa.png" />
          </image>
       </ImageView>
       <JFXPasswordField fx:id="txtSenha" layoutX="326.0" layoutY="313.0" />

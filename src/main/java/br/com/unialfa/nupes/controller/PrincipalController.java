@@ -66,13 +66,4 @@ public class PrincipalController {
 	
 	}
 	
-	@FXML
-	void Documento(ActionEvent event) throws IOException {
-		URL tela;
-		tela = getClass().getResource("../view/FXMLGerarSalvarDoc.fxml");
-		Parent fxmlParent = (Parent) FXMLLoader.load(tela);
-		PanePrincipal.getChildren().clear();
-		PanePrincipal.getChildren().add(fxmlParent);
-	}
-	
 }
