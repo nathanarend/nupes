@@ -66,5 +66,10 @@ public class Professor extends Pessoa {
 	public void setTutulacao(String titulacao) {
 		this.titulacao = titulacao;
 	}
+	
+	@Override
+	public String toString() {
+		return nome;
+	}
 
 }
