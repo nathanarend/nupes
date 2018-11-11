@@ -1,7 +1,5 @@
 package br.com.unialfa.nupes.entity;
 
-import br.com.unialfa.nupes.enumerator.EnumCurso;
-
 public class Aluno extends Pessoa {
 
 	private String matricula;
@@ -30,6 +28,10 @@ public class Aluno extends Pessoa {
 	public Aluno(int id_curso) {
 		this.id_curso = id_curso;
 
+	}
+	@Override
+	public String toString() {
+		return nome;
 	}
 
 }

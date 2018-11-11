@@ -1,26 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.unialfa.nupes.controller.PrincipalController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.unialfa.nupes.controller.CadastroBancaController">
    <children>
       <Pane prefHeight="47.0" prefWidth="774.0" style="-fx-background-color: #5882FA;">
          <children>
             <ImageView fitHeight="47.0" fitWidth="64.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
             <JFXButton layoutX="686.0" layoutY="9.0" style="-fx-background-color: #f2f2f2; -fx-padding: 6; -fx-background-radius: 15;" text="Deslogar" />
+            <Label layoutX="270.0" layoutY="6.0" prefHeight="36.0" prefWidth="235.0" text="CADASTRO BANCA" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="7.0" layoutY="13.0" text="VOLTAR" />
          </children>
       </Pane>
-      <Group layoutX="102.0" layoutY="185.0">
-         <children>
-            <JFXButton minHeight="134.0" prefWidth="134.0" styleClass="botaoBanca" stylesheets="@../application/application.css" text=" " />
-            <JFXButton layoutX="147.0" minHeight="134.0" onAction="#cadAluno" prefWidth="134.0" styleClass="botaoAluno" stylesheets="@../application/application.css" text=" " />
-            <JFXButton fx:id="btnCadProfessor" layoutX="294.0" minHeight="134.0" onAction="#CadProfessor" prefHeight="131.0" prefWidth="134.0" styleClass="botaoProfessor" stylesheets="@../application/application.css" text=" " />
-            <JFXButton fx:id="btnCadCurso" layoutX="441.0" minHeight="134.0" onAction="#CadProfessor" prefWidth="134.0" style="-fx-background-color: FF0;" styleClass="botaoCurso" stylesheets="@../application/application.css" text=" " />
-         </children>
-      </Group>
+      <Group layoutX="102.0" layoutY="185.0" />
+      <JFXTextField fx:id="txtNomeBanca" layoutX="137.0" layoutY="98.0" prefHeight="29.0" prefWidth="484.0" />
+      <JFXComboBox fx:id="txtOrientador" layoutX="210.0" layoutY="155.0" prefHeight="26.0" prefWidth="291.0" />
+      <JFXComboBox fx:id="txtLeitor" layoutX="173.0" layoutY="210.0" prefHeight="26.0" prefWidth="330.0" />
+      <JFXButton fx:id="btnAdicionaLeitor" layoutX="503.0" layoutY="210.0" text="ADICIONAR MAIS" />
+      <JFXComboBox fx:id="cbAluno" layoutX="79.0" layoutY="254.0" prefHeight="26.0" prefWidth="428.0" />
+      <JFXComboBox fx:id="txtAluno2" layoutX="79.0" layoutY="306.0" prefHeight="26.0" prefWidth="428.0" />
+      <JFXComboBox fx:id="txtAluno3" layoutX="79.0" layoutY="358.0" prefHeight="26.0" prefWidth="428.0" />
+      <Label layoutX="36.0" layoutY="420.0" text="DATA APRESENTAÇÃO:" />
+      <JFXDatePicker fx:id="dtData" layoutX="167.0" layoutY="415.0" />
+      <Label layoutX="29.0" layoutY="112.0" text="NOME DA BANCA:" />
+      <Label layoutX="29.0" layoutY="258.0" text="ALUNO:" />
+      <Label layoutX="29.0" layoutY="168.0" text="PROFESSOR(A) ORIENTADOR(A):" />
+      <Label layoutX="29.0" layoutY="214.0" text="PROFESSOR(A) LEITOR(A):" />
+      <Label layoutX="29.0" layoutY="310.0" text="ALUNO:" />
+      <Label layoutX="29.0" layoutY="362.0" text="ALUNO:" />
+      <JFXButton fx:id="btnSalvar" layoutX="613.0" layoutY="459.0" text="SALVAR" />
    </children>
 </AnchorPane>

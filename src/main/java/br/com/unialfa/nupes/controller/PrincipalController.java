@@ -72,4 +72,14 @@ public class PrincipalController {
 
 	}
 	
+	@FXML
+	void cadBanca (ActionEvent event ) throws IOException{
+		Stage stage = new Stage();
+		AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("../view/FXMLCadastroBanca.fxml"));
+		Scene scene = new Scene(root);
+		stage.setTitle("Cadastro Aluno.");
+		stage.setScene(scene);
+		stage.show();
+	
+	}
 }
