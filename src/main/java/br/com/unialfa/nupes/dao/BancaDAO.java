@@ -9,6 +9,7 @@ import java.util.List;
 
 import br.com.unialfa.nupes.configuration.ModuloConexao;
 import br.com.unialfa.nupes.entity.Aluno;
+import br.com.unialfa.nupes.entity.Professor;
 
 public class BancaDAO {
 
@@ -37,4 +38,27 @@ public class BancaDAO {
 		return listaAluno;
 
 	}
+	 
+	 public List<Professor> listaprofessor() throws SQLException{
+		 List<Professor> professores = new ArrayList<>();
+		 PreparedStatement stmt = null;
+		 Connection conn = ModuloConexao.GetConnection();
+		 try {
+			 String sql = "SELECT nome FROM professor";
+			 stmt = conn.prepareStatement(sql);
+			 ResultSet rs = stmt.executeQuery(sql);
+			 	while(rs.next()) {
+			 		Professor professor = new Professor();
+			 		professor.setNome(rs.getString("nome"));
+			 		professores.add(professor);
+			 	}
+			 	stmt.close();
+			 	conn.close();
+		 }catch (SQLException e) {
+			 e.printStackTrace();
+		 }
+		 return professores;
+		 
+		 
+	 }
 }

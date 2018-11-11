@@ -27,8 +27,8 @@
       </Pane>
       <Group layoutX="102.0" layoutY="185.0" />
       <JFXTextField fx:id="txtNomeBanca" layoutX="137.0" layoutY="98.0" prefHeight="29.0" prefWidth="484.0" />
-      <JFXComboBox fx:id="txtOrientador" layoutX="210.0" layoutY="155.0" prefHeight="26.0" prefWidth="291.0" />
-      <JFXComboBox fx:id="txtLeitor" layoutX="173.0" layoutY="210.0" prefHeight="26.0" prefWidth="330.0" />
+      <JFXComboBox fx:id="cbOrientador" layoutX="210.0" layoutY="155.0" prefHeight="26.0" prefWidth="291.0" />
+      <JFXComboBox fx:id="cbLeitor" layoutX="173.0" layoutY="210.0" prefHeight="26.0" prefWidth="330.0" />
       <JFXButton fx:id="btnAdicionaLeitor" layoutX="503.0" layoutY="210.0" text="ADICIONAR MAIS" />
       <JFXComboBox fx:id="cbAluno" layoutX="79.0" layoutY="254.0" prefHeight="26.0" prefWidth="428.0" />
       <JFXComboBox fx:id="txtAluno2" layoutX="79.0" layoutY="306.0" prefHeight="26.0" prefWidth="428.0" />

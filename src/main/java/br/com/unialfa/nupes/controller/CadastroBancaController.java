@@ -18,6 +18,7 @@ import com.jfoenix.controls.JFXTextField;
 import br.com.unialfa.nupes.configuration.ModuloConexao;
 import br.com.unialfa.nupes.dao.BancaDAO;
 import br.com.unialfa.nupes.entity.Aluno;
+import br.com.unialfa.nupes.entity.Professor;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -39,10 +40,10 @@ public class CadastroBancaController implements Initializable {
 	 private JFXComboBox<Aluno> cbAluno;
 
 	@FXML
-	private JFXComboBox<?> txtAluno2;
+	private JFXComboBox<Professor> cbOrientador;
 
 	@FXML
-	private JFXComboBox<?> txtAluno3;
+	private JFXComboBox<Professor> cbLeitor;
 
 	@FXML
 	private JFXDatePicker dtData;
@@ -69,6 +70,10 @@ public class CadastroBancaController implements Initializable {
 		cbAluno.getItems().addAll(alunos);
 		return alunos;
 	}
-
+	
+	public List<Professor> pegaInfoProf() throws SQLException{
+		List<Professor> professor = dao.listaprofessor();
+		
+	}
 	
 }
