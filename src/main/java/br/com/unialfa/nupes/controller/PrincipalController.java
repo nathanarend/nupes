@@ -41,8 +41,13 @@ public class PrincipalController {
 		Parent fxmlParent = (Parent) FXMLLoader.load(arquivoFXML);
 		PanePrincipal.getChildren().clear();
 		PanePrincipal.getChildren().add(fxmlParent);
-	}
+		// Scene scene = new Scene(fxmlParent, 774, 521);
 
+	}
+//Stage
+//	Scene
+//	Titulo
+//	mostrar
 
 	@FXML
 	void cadAluno(ActionEvent event) throws IOException {
@@ -64,6 +69,17 @@ public class PrincipalController {
 		stage.setScene(scene);
 		stage.show();
 	
+
 	}
 	
+	@FXML
+	void cadBanca (ActionEvent event ) throws IOException{
+		Stage stage = new Stage();
+		AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("../view/FXMLCadastroBanca.fxml"));
+		Scene scene = new Scene(root);
+		stage.setTitle("Cadastro Aluno.");
+		stage.setScene(scene);
+		stage.show();
+	
+	}
 }
