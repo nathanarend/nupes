@@ -1,10 +1,30 @@
 package br.com.unialfa.nupes.entity;
 
-public class Pessoa extends Curso {
+import br.com.unialfa.nupes.enumerator.EnumSexo;
+
+public class Pessoa {
 
 	String matricula;
 	String nome;
 	int id;
+	String sexo;
+	EnumSexo enumSexo;
+
+	public EnumSexo getEnumSexo() {
+		return enumSexo;
+	}
+
+	public void setEnumSexo(EnumSexo enumSexo) {
+		this.enumSexo = enumSexo;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 
 	public int getId() {
 		return id;

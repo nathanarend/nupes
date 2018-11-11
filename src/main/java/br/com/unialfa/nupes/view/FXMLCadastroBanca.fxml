@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="214.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.unialfa.nupes.controller.PrincipalController">
    <children>
-      <JFXTextField layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="354.0" />
-      <Label layoutX="14.0" layoutY="99.0" text="Nome Banca:">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <JFXButton layoutX="204.0" layoutY="175.0" style="-fx-background-color: #C0C0C0; -fx-background-radius: 15; -fx-padding: 6;" text="Salvar" />
-      <Label layoutX="60.0" layoutY="42.0" text="Cadastrar Banca de TCC">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
-      <JFXButton layoutX="114.0" layoutY="175.0" style="-fx-background-color: #C0C0C0; -fx-padding: 6; -fx-background-radius: 15;" text="Cancelar" />
-      <AnchorPane prefHeight="36.0" prefWidth="380.0" style="-fx-background-color: #5882FA;" />
+      <Pane prefHeight="47.0" prefWidth="774.0" style="-fx-background-color: #5882FA;">
+         <children>
+            <ImageView fitHeight="47.0" fitWidth="64.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+            <JFXButton layoutX="686.0" layoutY="9.0" style="-fx-background-color: #f2f2f2; -fx-padding: 6; -fx-background-radius: 15;" text="Deslogar" />
+         </children>
+      </Pane>
+      <Group layoutX="102.0" layoutY="185.0">
+         <children>
+            <JFXButton minHeight="134.0" prefWidth="134.0" styleClass="botaoBanca" stylesheets="@../application/application.css" text=" " />
+            <JFXButton layoutX="147.0" minHeight="134.0" onAction="#cadAluno" prefWidth="134.0" styleClass="botaoAluno" stylesheets="@../application/application.css" text=" " />
+            <JFXButton fx:id="btnCadProfessor" layoutX="294.0" minHeight="134.0" onAction="#CadProfessor" prefHeight="131.0" prefWidth="134.0" styleClass="botaoProfessor" stylesheets="@../application/application.css" text=" " />
+            <JFXButton fx:id="btnCadCurso" layoutX="441.0" minHeight="134.0" onAction="#CadProfessor" prefWidth="134.0" style="-fx-background-color: FF0;" styleClass="botaoCurso" stylesheets="@../application/application.css" text=" " />
+         </children>
+      </Group>
    </children>
 </AnchorPane>

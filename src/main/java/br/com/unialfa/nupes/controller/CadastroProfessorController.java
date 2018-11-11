@@ -9,10 +9,11 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
 import br.com.unialfa.nupes.dao.ProfessorDAO;
-import br.com.unialfa.nupes.entity.AlunoOuProfessor;
+
 import br.com.unialfa.nupes.entity.Curso;
 import br.com.unialfa.nupes.entity.Professor;
 import br.com.unialfa.nupes.enumerator.EnumGrauAcademico;
+import br.com.unialfa.nupes.enumerator.EnumSexo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,7 +21,7 @@ import javafx.fxml.Initializable;
 public class CadastroProfessorController implements Initializable {
 	Professor professor = new Professor();
 	Curso curso = new Curso();
-	AlunoOuProfessor ap = new AlunoOuProfessor();
+//
 	ProfessorDAO pd = new ProfessorDAO();
 	@FXML
 	private JFXTextField txtNome;
@@ -33,11 +34,14 @@ public class CadastroProfessorController implements Initializable {
 
 	@FXML
 	private JFXComboBox<EnumGrauAcademico> cbTitularidade;
+	@FXML
+	private JFXComboBox<EnumSexo> cbSexo;
 
 	void pegaEnum() {
 		cbTitularidade.getItems().add(null);
+		cbSexo.getItems().add(null);
 		cbTitularidade.getItems().addAll(EnumGrauAcademico.values());
-
+		cbSexo.getItems().addAll(EnumSexo.values());
 	}
 
 	@Override
@@ -50,12 +54,13 @@ public class CadastroProfessorController implements Initializable {
 		prof.setNome(txtNome.getText());
 		prof.setMatricula(txtMatricula.getText());
 		prof.setEnumGrauAcademico(cbTitularidade.getValue());
+		prof.setEnumSexo(cbSexo.getValue());
 
 	}
 	@FXML
 	private void save(ActionEvent event) throws SQLException {
 		catchitems(professor, curso);
-		pd.salvar(professor, ap);
+		pd.salvar(professor, curso);
 
 	}
 
