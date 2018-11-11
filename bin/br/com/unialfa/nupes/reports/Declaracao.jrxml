@@ -9,17 +9,12 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="80" splitType="Stretch">
-			<image>
-				<reportElement x="180" y="0" width="200" height="80" uuid="a691dd2c-cca1-4d9a-b0dd-75ad29fb32f7"/>
-				<imageExpression><![CDATA["src/main/java/br/com/unialfa/nupes/image/UnialfaLogoPDF.png"]]></imageExpression>
-			</image>
-		</band>
+		<band height="80" splitType="Stretch"/>
 	</title>
 	<pageHeader>
-		<band height="44" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<staticText>
-				<reportElement x="230" y="14" width="90" height="16" uuid="f48e1f59-df01-4776-b5c4-f9666c707c84"/>
+				<reportElement x="232" y="7" width="90" height="16" uuid="f48e1f59-df01-4776-b5c4-f9666c707c84"/>
 				<textElement rotation="None" markup="">
 					<font size="12" isUnderline="true"/>
 				</textElement>
@@ -28,7 +23,16 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="89" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="170" height="19" uuid="ffb22ac8-04c2-49f7-93b9-e1546afc6378"/>
+				<text><![CDATA[Declaramos para os devidos fins, que ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="170" y="10" width="100" height="30" uuid="71293334-010a-474f-a159-eb7425107dfe"/>
+				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+			</textField>
+		</band>
 	</columnHeader>
 	<detail>
 		<band height="125" splitType="Stretch"/>
