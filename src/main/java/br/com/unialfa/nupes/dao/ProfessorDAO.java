@@ -7,50 +7,35 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import br.com.unialfa.nupes.configuration.ModuloConexao;
-import br.com.unialfa.nupes.entity.AlunoOuProfessor;
+
 import br.com.unialfa.nupes.entity.Curso;
 import br.com.unialfa.nupes.entity.Pessoa;
 import br.com.unialfa.nupes.entity.Professor;
 import br.com.unialfa.nupes.enumerator.EnumGrauAcademico;
 
-public class ProfessorDAO implements DAOInterface<Professor, AlunoOuProfessor> {
+public class ProfessorDAO implements DAOInterface<Professor, Curso> {
 	EnumGrauAcademico eg;
 
-	private final String sql = "INSERT INTO pessoa(id,nome,matricula,id_professor) VALUES (?,?,?,?)";
-	private final String sql1 = "INSERT INTO professor(titulacao) VALUES (?)";
-
+	private final String sql = "INSERT INTO professor(nome,matricula,sexo,titulacao) VALUES (?,?,?,?)";
 
 	@Override
-	public void salvar(Professor p, AlunoOuProfessor ap) throws SQLException {
+	public void salvar(Professor p, Curso curso) throws SQLException {
 		PreparedStatement stmt = null;
 		Connection conn = ModuloConexao.GetConnection();
 		Pessoa pessoa = new Pessoa();
 
 		try {
 			conn.setAutoCommit(false);
-			stmt = conn.prepareStatement(sql1, Statement.RETURN_GENERATED_KEYS);
-	
-			String titulo = p.getEnumGrauAcademico().getGrau();
-			stmt.setString(1, titulo);
-
-			int rows = stmt.executeUpdate();
-			
-			ResultSet rs = stmt.getGeneratedKeys();
-			rs.next();
-			int idgerado = rs.getInt(1);
-			ap.setId(idgerado);
-			
-			
-
 			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, ap.getId());
-			stmt.setString(2, p.getNome());
-			stmt.setString(3, p.getMatricula());
-			stmt.setInt(4, ap.getId());
 
-			
-			
-			
+			String titulo = p.getEnumGrauAcademico().getGrau();
+			stmt.setString(1, p.getNome());
+			stmt.setString(2, p.getMatricula());
+			String s = p.getEnumSexo().getSexo();
+			stmt.setString(3, s);
+			String t = p.getEnumGrauAcademico().getGrau();
+			stmt.setString(4, t);
+
 			stmt.executeUpdate();
 			conn.commit();
 			System.out.println("Salvo");

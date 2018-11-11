@@ -13,6 +13,7 @@ import br.com.unialfa.nupes.entity.Aluno;
 import br.com.unialfa.nupes.entity.Curso;
 import br.com.unialfa.nupes.enumerator.EnumCurso;
 import br.com.unialfa.nupes.enumerator.EnumPeriodo;
+import br.com.unialfa.nupes.enumerator.EnumSexo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -32,24 +33,22 @@ public class CadastroAlunoController implements Initializable {
 	@FXML
 	private JFXComboBox<EnumCurso> cbCurso;
 	@FXML
-	private JFXComboBox<EnumPeriodo> cbPeriodo;
+	private JFXComboBox<EnumSexo> cbSexo;
 	AlunoDAO aluno = new AlunoDAO();
 	Aluno a = new Aluno();
 	Curso c = new Curso();
 
-	
 	void pegaEnums() {
 		cbCurso.getItems().add(null);
-		cbPeriodo.getItems().add(null);
+		cbSexo.getItems().add(null);
 		cbCurso.getItems().addAll(EnumCurso.values());
-		cbPeriodo.getItems().addAll(EnumPeriodo.values());
+		cbSexo.getItems().addAll(EnumSexo.values());
 
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		pegaEnums();
-		
 
 	}
 
@@ -57,7 +56,7 @@ public class CadastroAlunoController implements Initializable {
 		a.setNome(txtNome.getText());
 		a.setMatricula(txtMatricula.getText());
 		c.setCurso(cbCurso.getValue());
-		c.setPeriodo(cbPeriodo.getValue());
+		a.setEnumSexo(cbSexo.getValue());
 
 	}
 

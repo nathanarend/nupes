@@ -35,6 +35,6 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cbPeriodo" layoutX="280.0" layoutY="160.0" />
+      <JFXComboBox fx:id="cbSexo" layoutX="280.0" layoutY="160.0" />
    </children>
 </AnchorPane>
