@@ -59,6 +59,7 @@ public class CadastroBancaController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
 			pegaAlunos();
+			pegaInfoProf();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -73,6 +74,11 @@ public class CadastroBancaController implements Initializable {
 	
 	public List<Professor> pegaInfoProf() throws SQLException{
 		List<Professor> professor = dao.listaprofessor();
+		cbLeitor.getItems().add(null);
+		cbOrientador.getItems().add(null);
+		cbLeitor.getItems().addAll(professor);
+		cbOrientador.getItems().addAll(professor);
+		return professor;
 		
 	}
 	
