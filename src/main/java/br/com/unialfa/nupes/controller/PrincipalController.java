@@ -17,22 +17,22 @@ import javafx.stage.Stage;
 public class PrincipalController {
 
 	@FXML
-	private AnchorPane PanePrincipal;
+	static private AnchorPane PanePrincipal;
 
 	@FXML
-	private JFXButton btnDeslogar;
+	static	private JFXButton btnDeslogar;
 
 	@FXML
-	private Button btnCadastro;
+	static private Button btnCadastro;
 
 	@FXML
-	private Button btnDocumentos;
+	static	private Button btnDocumentos;
 
 	@FXML
-	private Button btnRelatorio;
+	static	private Button btnRelatorio;
 
 	@FXML
-	private Button btnCadCurso,btnCadProfessor;
+static	private Button btnCadCurso,btnCadProfessor;
 
 	@FXML
 	void cadastrar(ActionEvent event) throws IOException {
@@ -50,7 +50,7 @@ public class PrincipalController {
 //	mostrar
 
 	@FXML
-	void cadAluno(ActionEvent event) throws IOException {
+	 void cadAluno(ActionEvent event) throws IOException {
 		Stage stage = new Stage();
 		AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("../view/FXMLCadastroAluno.fxml"));
 		Scene scene = new Scene(root);
