@@ -59,13 +59,13 @@ public class BancaDAO {
 			stmt.executeUpdate();
 
 		}
-		for(Professor p : idP) {
+		for (Professor p : idP) {
 			String sql = "UPDATE professor SET id_banca=? WHERE id_professor = " + p.getId() + ";";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, id);
 			stmt.executeUpdate();
 		}
-		
+
 	}
 
 	public List<Professor> listaprofessor() throws SQLException {
@@ -73,12 +73,13 @@ public class BancaDAO {
 		PreparedStatement stmt = null;
 		Connection conn = ModuloConexao.GetConnection();
 		try {
-			String sql = "SELECT nome FROM professor";
+			String sql = "SELECT * FROM professor";
 			stmt = conn.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Professor professor = new Professor();
 				professor.setNome(rs.getString("nome"));
+				professor.setId(rs.getInt("id_professor"));
 				professores.add(professor);
 			}
 			stmt.close();
@@ -92,26 +93,24 @@ public class BancaDAO {
 
 	public void save(Banca b) throws SQLException {
 
-		String sql = "INSERT INTO banca(nome) VALUES (?)";
-		String consultaIdAluno = "";
+		String sql = "INSERT INTO banca(nome,dia) VALUES (?,?)";
 
-		List<Professor> professores = new ArrayList<>();
 		PreparedStatement stmt = null;
 		Connection conn = ModuloConexao.GetConnection();
 		try {
 			conn.setAutoCommit(false);
-			stmt = conn.prepareStatement(sql);
 
 			stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, b.getNome());
-			int rows = stmt.executeUpdate();
+			stmt.setDate(2, b.getData());
+			stmt.executeUpdate();
 
 			ResultSet rs1 = stmt.getGeneratedKeys();
 			rs1.next();
 			id = rs1.getInt(1);
 
 			// int rows = stmt.executeUpdate();
-			stmt.executeUpdate();
+
 			conn.commit();
 			System.out.println("Salvo com sucesso!");
 			stmt.close();

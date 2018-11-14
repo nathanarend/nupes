@@ -31,7 +31,7 @@
       <JFXComboBox fx:id="cbQtd" layoutX="672.0" layoutY="156.0" onAction="#selecionaQtd" promptText="-" />
       <JFXComboBox fx:id="cbOrientador" layoutX="210.0" layoutY="155.0" prefHeight="26.0" prefWidth="291.0" />
       <JFXComboBox fx:id="cbLeitor" layoutX="173.0" layoutY="210.0" prefHeight="26.0" prefWidth="330.0" />
-      <JFXButton fx:id="btnAdicionaLeitor" layoutX="515.0" layoutY="213.0" minHeight="26.0" minWidth="26.0" onAction="#adicionaAluno" prefHeight="16.0" prefWidth="15.0" styleClass="botaoAdd" stylesheets="@../application/application.css" text=" " />
+      <JFXButton fx:id="btnAdicionaLeitor" layoutX="515.0" layoutY="213.0" minHeight="26.0" minWidth="26.0" onAction="#adicionaProfOrientador" prefHeight="16.0" prefWidth="15.0" styleClass="botaoAdd" stylesheets="@../application/application.css" text=" " />
       <JFXComboBox fx:id="cbAluno" layoutX="102.0" layoutY="300.0" prefHeight="26.0" prefWidth="428.0" />
       <JFXComboBox fx:id="cbAluno2" layoutX="102.0" layoutY="343.0" prefHeight="26.0" prefWidth="428.0" />
       <JFXComboBox fx:id="cbAluno3" layoutX="102.0" layoutY="393.0" prefHeight="26.0" prefWidth="428.0" />

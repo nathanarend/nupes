@@ -1,8 +1,19 @@
 package br.com.unialfa.nupes.entity;
 
+import java.sql.Date;
+
 public class Banca {
 	private int id;
 	private String nome;
+	private Date data;
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
 
 	public int getId() {
 		return id;

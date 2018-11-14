@@ -1,12 +1,9 @@
 package br.com.unialfa.nupes.controller;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -17,7 +14,6 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 
-import br.com.unialfa.nupes.configuration.ModuloConexao;
 import br.com.unialfa.nupes.dao.BancaDAO;
 import br.com.unialfa.nupes.entity.Aluno;
 import br.com.unialfa.nupes.entity.Banca;
@@ -27,7 +23,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import sun.util.calendar.BaseCalendar.Date;
 
 public class CadastroBancaController implements Initializable {
 
@@ -78,6 +74,7 @@ public class CadastroBancaController implements Initializable {
 	static int idAluno1;
 	static int idAluno2;
 	static int idAluno3;
+	private LocalDate data;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -130,7 +127,7 @@ public class CadastroBancaController implements Initializable {
 			prof.getId();
 			professor.add(prof);
 			cbLeitor.getSelectionModel().clearAndSelect(0);
-	
+
 		}
 		cbLeitor.getSelectionModel().clearAndSelect(0);
 
@@ -138,17 +135,22 @@ public class CadastroBancaController implements Initializable {
 
 	@FXML
 	void save(ActionEvent event) throws SQLException {
+
 		selecionaAluno();
+		selecionaProfessores();
 		pegaValores(banca);
 		dao.save(banca);
-		dao.vinculaBanca(alunoArmazena,professor);
-		JOptionPane.showMessageDialog(null, "ID" + idAluno1 + "NOME" + a.getNome());
+		dao.vinculaBanca(alunoArmazena, professor);
 
 	}
 
 	void pegaValores(Banca b) {
 		banca.setNome(txtNomeBanca.getText());
-		String temp = "";
+		
+		LocalDate temp = dtData.getValue();
+		java.sql.Date date = java.sql.Date.valueOf(temp);
+		banca.setData(date);
+		
 
 	}
 
@@ -210,9 +212,14 @@ public class CadastroBancaController implements Initializable {
 		}
 
 	}
+
 	void selecionaProfessores() {
-		String qqr = cbQtd.getSelectionModel().getSelectedItem().toString();
+		String qqr = cbLeitor.getSelectionModel().getSelectedItem().toString();
+		String qqr2 = cbOrientador.getSelectionModel().getSelectedItem().toString();
 		Professor prof = new Professor();
+		prof = cbLeitor.getValue();
+		prof.getId();
+		professor.add(prof);
 		prof = cbOrientador.getValue();
 		prof.getId();
 		professor.add(prof);
