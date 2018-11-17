@@ -18,7 +18,7 @@
 		</Pane>
 		<Group layoutX="14.0" layoutY="188.0" />
       <Button fx:id="btnCadastro" layoutX="158.0" layoutY="188.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="130.0" prefWidth="129.0" styleClass="botaoCadastro" stylesheets="@../application/application.css" />
-      <Button id="btnDocumentos" fx:id="btnDocumentos" layoutX="305.0" layoutY="188.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="130.0" styleClass="botaoDocumento" stylesheets="@../application/application.css" />
+      <Button id="btnDocumentos" fx:id="btnDeclaracao" layoutX="305.0" layoutY="188.0" mnemonicParsing="false" onAction="#abreDoc" prefHeight="130.0" prefWidth="130.0" styleClass="botaoDocumento" stylesheets="@../application/application.css" />
       <Button id="btnRelatorio" fx:id="btnRelatorio" layoutX="452.0" layoutY="188.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="130.0" styleClass="botaoRelatorio" stylesheets="@../application/application.css" />
       <Separator layoutX="87.0" layoutY="164.0" prefHeight="1.0" prefWidth="555.0" />
       <Separator layoutX="87.0" layoutY="342.0" prefHeight="1.0" prefWidth="555.0" />

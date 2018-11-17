@@ -19,7 +19,6 @@ import br.com.unialfa.nupes.entity.Professor;
 public class BancaDAO {
 	static private int id;
 	static Aluno a = new Aluno();
-	CadastroBancaController bc;
 	static List<Aluno> nome = new ArrayList<>();
 
 	public List<Aluno> listaAluno() throws SQLException {

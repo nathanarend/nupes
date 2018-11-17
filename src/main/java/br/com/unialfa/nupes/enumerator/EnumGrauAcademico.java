@@ -1,8 +1,7 @@
 package br.com.unialfa.nupes.enumerator;
 
 public enum EnumGrauAcademico {
-	GRAU_GRADUADO(1L, "GRADUADO(A)"), GRAU_BACHAREL(2L, "BACHAREL"), GRAU_POS_GRADUADO(3L, "PÓS-GRADUADO(A)"),
-	GRAU_MESTRADO(4L, "MESTRE(A)"), GRAU_DOUTORADO(5L, "DOUTOR(A)");
+	MESTRE(1L,"Me."), MESTRA(2L,"Ma."),DOUTOR(3L,"Dr."),DOUTORA(4L,"Dra.");
 	
 	
 	private Long id;
