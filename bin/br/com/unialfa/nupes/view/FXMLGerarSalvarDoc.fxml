@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane fx:id="PanePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.unialfa.nupes.controller.GerarSalvarDocController">
+<AnchorPane fx:id="PanePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.unialfa.nupes.controller.RelatorioController">
    <children>
       <Pane prefHeight="47.0" prefWidth="774.0" style="-fx-background-color: #5882FA;">
          <children>
@@ -21,30 +25,30 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="786.0">
                      <children>
-                        <Label layoutX="53.0" layoutY="27.0" text="Curso:" />
-                        <JFXComboBox fx:id="CBCurso" layoutX="216.0" layoutY="23.0" prefHeight="25.0" prefWidth="370.0" />
-                        <Label layoutX="53.0" layoutY="62.0" text="Nome Banca:" />
-                        <JFXComboBox fx:id="CBBanca" layoutX="216.0" layoutY="58.0" prefHeight="25.0" prefWidth="370.0" />
-                        <JFXComboBox fx:id="CBOrientador" layoutX="216.0" layoutY="123.0" prefHeight="25.0" prefWidth="370.0" />
-                        <Label layoutX="53.0" layoutY="93.0" text="Semetre de Apresentação:" />
-                        <JFXTextField fx:id="TFSemestre" layoutX="215.0" layoutY="89.0" prefHeight="25.0" prefWidth="371.0" />
-                        <Label layoutX="53.0" layoutY="127.0" text="Professor(a) Orientador(a):" />
-                        <JFXComboBox fx:id="CBLeitora" layoutX="217.0" layoutY="157.0" prefHeight="25.0" prefWidth="370.0" />
-                        <Label layoutX="54.0" layoutY="161.0" text="Professor(a) Leitor(a):" />
-                        <Label layoutX="55.0" layoutY="198.0" text="Professor(a) Leitor(a):" />
-                        <JFXComboBox fx:id="CBLeitorb" layoutX="218.0" layoutY="194.0" prefHeight="25.0" prefWidth="370.0" />
-                        <Label layoutX="54.0" layoutY="234.0" text="Quantidade de Alunos:" />
-                        <JFXComboBox fx:id="CBQuantalunos" layoutX="216.0" layoutY="230.0" prefHeight="25.0" prefWidth="370.0" />
-                        <Label layoutX="54.0" layoutY="267.0" text="Aluno 1:" />
-                        <Label layoutX="54.0" layoutY="300.0" text="Aluno 2:" />
-                        <Label layoutX="54.0" layoutY="334.0" text="Aluno 3:" />
-                        <JFXComboBox fx:id="CBAlunoUm" layoutX="216.0" layoutY="263.0" prefHeight="25.0" prefWidth="370.0" />
-                        <JFXComboBox fx:id="CBAlunoDois" layoutX="216.0" layoutY="296.0" prefHeight="25.0" prefWidth="370.0" />
-                        <JFXComboBox fx:id="CBAlunoTres" layoutX="216.0" layoutY="330.0" prefHeight="25.0" prefWidth="370.0" />
-                        <JFXButton fx:id="ButtonNovo" buttonType="RAISED" layoutX="65.0" layoutY="382.0" prefHeight="47.0" prefWidth="64.0" style="-fx-background-radius: 15; -fx-background-color: #DCDCDC;" text="Novo" />
-                        <JFXButton fx:id="ButtonSalvar" buttonType="RAISED" layoutX="163.0" layoutY="382.0" prefHeight="47.0" prefWidth="59.0" style="-fx-background-radius: 15; -fx-background-color: #DCDCDC;" text="Salvar" />
-                        <JFXButton fx:id="ButtonCancelar" buttonType="RAISED" layoutX="254.0" layoutY="382.0" prefHeight="47.0" prefWidth="77.0" style="-fx-background-radius: 15; -fx-background-color: #DCDCDC;" text="Cancelar" />
-                        <JFXButton fx:id="ButtonEliminar" buttonType="RAISED" layoutX="362.0" layoutY="382.0" prefHeight="47.0" prefWidth="77.0" style="-fx-background-radius: 15; -fx-background-color: #DCDCDC;" text="Eliminar" />
+                        <Label layoutX="53.0" layoutY="37.0" text="Curso:" />
+                        <JFXComboBox fx:id="cbNomeCurso" layoutX="216.0" layoutY="26.0" prefHeight="25.0" prefWidth="370.0" />
+                        <Label layoutX="53.0" layoutY="69.0" text="Nome Banca:" />
+                        <JFXComboBox fx:id="cbNomeBanca" layoutX="216.0" layoutY="58.0" prefHeight="25.0" prefWidth="370.0" />
+                        <JFXComboBox fx:id="cbOrientador" layoutX="216.0" layoutY="123.0" prefHeight="25.0" prefWidth="370.0" />
+                        <Label layoutX="53.0" layoutY="100.0" text="Semetre de Apresentação:" />
+                        <Label layoutX="53.0" layoutY="130.0" text="Professor(a) Orientador(a):" />
+                        <JFXComboBox fx:id="cbLeitor1" layoutX="217.0" layoutY="157.0" prefHeight="25.0" prefWidth="370.0" />
+                        <Label layoutX="54.0" layoutY="166.0" text="Professor(a) Leitor(a):" />
+                        <Label layoutX="55.0" layoutY="201.0" text="Professor(a) Leitor(a):" />
+                        <JFXComboBox fx:id="CBLeitor2" layoutX="218.0" layoutY="194.0" prefHeight="25.0" prefWidth="370.0" />
+                        <Label layoutX="54.0" layoutY="238.0" text="Quantidade de Alunos:" />
+                        <JFXComboBox fx:id="cbQtdA" layoutX="216.0" layoutY="229.0" onAction="#selecionaQtd" prefHeight="25.0" prefWidth="370.0" />
+                        <Label fx:id="lblA1" layoutX="54.0" layoutY="270.0" text="Aluno 1:" />
+                        <Label fx:id="lblA2" layoutX="54.0" layoutY="303.0" text="Aluno 2:" />
+                        <Label fx:id="lbA3" layoutX="54.0" layoutY="337.0" text="Aluno 3:" />
+                        <JFXComboBox fx:id="cbAluno1" layoutX="216.0" layoutY="263.0" prefHeight="25.0" prefWidth="370.0" />
+                        <JFXComboBox fx:id="cbAluno2" layoutX="216.0" layoutY="296.0" prefHeight="25.0" prefWidth="370.0" />
+                        <JFXComboBox fx:id="cbAluno3" layoutX="216.0" layoutY="330.0" prefHeight="25.0" prefWidth="370.0" />
+                        <JFXButton fx:id="btnNovo" buttonType="RAISED" layoutX="65.0" layoutY="382.0" onAction="#geraPdf" prefHeight="47.0" prefWidth="64.0" style="-fx-background-radius: 15; -fx-background-color: #DCDCDC;" text="Gerar" />
+                        <JFXButton fx:id="btnSalvar" buttonType="RAISED" layoutX="163.0" layoutY="382.0" prefHeight="47.0" prefWidth="59.0" style="-fx-background-radius: 15; -fx-background-color: #DCDCDC;" text="Salvar" />
+                        <JFXButton fx:id="btnCancelar" buttonType="RAISED" layoutX="254.0" layoutY="382.0" prefHeight="47.0" prefWidth="77.0" style="-fx-background-radius: 15; -fx-background-color: #DCDCDC;" text="Cancelar" />
+                        <JFXButton fx:id="btnElimina" buttonType="RAISED" layoutX="362.0" layoutY="382.0" prefHeight="47.0" prefWidth="77.0" style="-fx-background-radius: 15; -fx-background-color: #DCDCDC;" text="Eliminar" />
+                        <JFXTextField fx:id="txtSemestre" layoutX="214.0" layoutY="90.0" prefHeight="25.0" prefWidth="370.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -66,7 +70,7 @@
                           </columns>
                         </TableView>
                         <JFXTextField fx:id="TextBuscar" layoutX="14.0" layoutY="24.0" prefHeight="25.0" prefWidth="220.0" />
-                        <JFXButton fx:id="ButtonBuscar" buttonType="RAISED" layoutX="540.0" layoutY="24.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 15;" text="Buscar" />
+                        <JFXButton fx:id="ButtonBuscar" buttonType="RAISED" layoutX="540.0" layoutY="26.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 15;" text="Buscar" />
                         <JFXButton fx:id="ButtonAtualizar" buttonType="RAISED" layoutX="632.0" layoutY="24.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 15;" text="Atualizar" />
                         <JFXComboBox fx:id="ComboBuscar" layoutX="268.0" layoutY="24.0" prefHeight="25.0" prefWidth="219.0" />
                      </children>

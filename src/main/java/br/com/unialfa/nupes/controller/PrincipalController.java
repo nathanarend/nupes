@@ -3,6 +3,8 @@ package br.com.unialfa.nupes.controller;
 import java.io.IOException;
 import java.net.URL;
 
+import javax.swing.JOptionPane;
+
 import com.jfoenix.controls.JFXButton;
 
 import javafx.event.ActionEvent;
@@ -18,6 +20,9 @@ public class PrincipalController {
 
 	@FXML
 	private AnchorPane PanePrincipal;
+
+	@FXML
+	private AnchorPane PaneCadastro1;
 
 	@FXML
 	private JFXButton btnDeslogar;
@@ -74,13 +79,12 @@ public class PrincipalController {
 
 	@FXML
 	void cadBanca(ActionEvent event) throws IOException {
-		Stage stage = new Stage();
-		AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("../view/FXMLCadastroBanca.fxml"));
-		Scene scene = new Scene(root);
-		stage.setTitle("Cadastro Aluno.");
-		stage.setScene(scene);
-		stage.show();
 
+		URL arquivoFXML;
+		arquivoFXML = getClass().getResource("../view/FXMLCadastroBanca.fxml");
+		Parent fxmlParent = (Parent) FXMLLoader.load(arquivoFXML);
+		PaneCadastro1.getChildren().clear();
+		PaneCadastro1.getChildren().add(fxmlParent);
 	}
 
 	@FXML
@@ -91,4 +95,37 @@ public class PrincipalController {
 		PanePrincipal.getChildren().clear();
 		PanePrincipal.getChildren().add(fxmlParent);
 	}
+
+	@FXML
+	void retornaLogin(ActionEvent event) throws IOException {
+		URL arquivoFXML;
+		arquivoFXML = getClass().getResource("../view/FXMLPrincipal.fxml");
+		Parent fxmlParent = (Parent) FXMLLoader.load(arquivoFXML);
+		PanePrincipal.getChildren().clear();
+		PanePrincipal.getChildren().add(fxmlParent);
+	}
+
+	@FXML
+	void abreRelatorio(ActionEvent event) throws IOException {
+		JOptionPane.showMessageDialog(null, "EM BREVE!");
+	}
+
+	@FXML
+	void voltar(ActionEvent event) throws IOException {
+		URL arquivoFXML;
+		arquivoFXML = getClass().getResource("../view/FXMLPrincipal.fxml");
+		Parent fxmlParent = (Parent) FXMLLoader.load(arquivoFXML);
+		PaneCadastro1.getChildren().clear();
+		PaneCadastro1.getChildren().add(fxmlParent);
+	}
+
+	@FXML
+	void retornaLogin1(ActionEvent event) throws IOException {
+		URL arquivoFXML;
+		arquivoFXML = getClass().getResource("../view/FXMLPrincipal.fxml");
+		Parent fxmlParent = (Parent) FXMLLoader.load(arquivoFXML);
+		PanePrincipal.getChildren().clear();
+		PanePrincipal.getChildren().add(fxmlParent);
+	}
+
 }

@@ -16,13 +16,15 @@
          </font>
       </Label>
       <JFXButton fx:id="btnSalvar" buttonType="RAISED" layoutX="318.0" layoutY="237.0" onAction="#save" style="-fx-background-color: #C0C0C0; -fx-background-radius: 15; -fx-padding: 6;" text="Salvar" />
-      <Label layoutX="89.0" layoutY="43.0" text="Cadastrar Aluno(a)">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
-      <JFXButton fx:id="btnCancelar" buttonType="RAISED" layoutX="247.0" layoutY="237.0" style="-fx-background-color: #C0C0C0; -fx-padding: 6; -fx-background-radius: 15;" text="Cancelar" />
-      <AnchorPane prefHeight="36.0" prefWidth="383.0" style="-fx-background-color: #5882FA;" />
+      <AnchorPane prefHeight="48.0" prefWidth="383.0" style="-fx-background-color: #5882FA;">
+         <children>
+            <Label layoutX="80.0" layoutY="6.0" text="Cadastrar Aluno(a)" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <JFXButton fx:id="btnCancelar" buttonType="RAISED" layoutX="247.0" layoutY="237.0" style="-fx-background-color: #C0C0C0; -fx-padding: 6; -fx-background-radius: 15;" text="Limpar" />
       <Label layoutX="14.0" layoutY="140.0" text="Matrícula:">
          <font>
             <Font size="14.0" />
@@ -36,5 +38,10 @@
          </font>
       </Label>
       <JFXComboBox fx:id="cbSexo" layoutX="280.0" layoutY="160.0" />
+      <Label layoutX="234.0" layoutY="164.0" text="Sexo:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

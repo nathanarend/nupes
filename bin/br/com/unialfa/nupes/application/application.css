@@ -25,3 +25,12 @@
 .botaoCurso{
 		-fx-background-image:url("../image/Cursos.png")
 }
+.botaoAdd{
+		-fx-background-image:url("../image/add.png")
+}
+.botaoVoltar{
+	-fx-background-image:url("../image/Votar.png")
+}
+.botaoSalvar{
+	-fx-background-image:url("../image/salvar.png")
+}
