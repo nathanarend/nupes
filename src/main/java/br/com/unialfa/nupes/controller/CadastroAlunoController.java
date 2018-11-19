@@ -14,6 +14,7 @@ import br.com.unialfa.nupes.entity.Curso;
 import br.com.unialfa.nupes.enumerator.EnumCurso;
 import br.com.unialfa.nupes.enumerator.EnumPeriodo;
 import br.com.unialfa.nupes.enumerator.EnumSexo;
+import br.com.unialfa.nupes.exception.AlunoCadastroExceptionNome;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,7 +36,7 @@ public class CadastroAlunoController implements Initializable {
 	@FXML
 	private JFXComboBox<EnumSexo> cbSexo;
 	AlunoDAO aluno = new AlunoDAO();
-	
+
 	Aluno a = new Aluno();
 	Curso c = new Curso();
 
@@ -53,18 +54,28 @@ public class CadastroAlunoController implements Initializable {
 
 	}
 
-	private void catchvalues(Aluno a, Curso c) {
-		a.setNome(txtNome.getText());
-		a.setMatricula(txtMatricula.getText());
-		c.setCurso(cbCurso.getValue());
-		a.setEnumSexo(cbSexo.getValue());
-
+	private void catchvalues(Aluno a, Curso c) throws AlunoCadastroExceptionNome {
+		if(txtNome.getText().matches("[A-zA-Z]+")) {
+			a.setNome(txtNome.getText());
+			a.setMatricula(txtMatricula.getText());
+			c.setCurso(cbCurso.getValue());
+			a.setEnumSexo(cbSexo.getValue());
+		}
+		else  {
+			throw new AlunoCadastroExceptionNome();
+		
+			
+		}
 	}
 
 	@FXML
-	private void save(ActionEvent event) throws SQLException {
+	private void save(ActionEvent event) throws SQLException, AlunoCadastroExceptionNome {
 		catchvalues(a, c);
 		aluno.salvar(a, c);
+
+	}
+
+	void validaNome(JFXTextField field) {
 
 	}
 }

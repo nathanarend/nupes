@@ -1,5 +1,6 @@
 package br.com.unialfa.nupes.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -8,7 +9,11 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -19,13 +24,27 @@ import br.com.unialfa.nupes.entity.Aluno;
 import br.com.unialfa.nupes.entity.Banca;
 import br.com.unialfa.nupes.entity.Professor;
 import br.com.unialfa.nupes.enumerator.EnumQtdAluno;
+import br.com.unialfa.nupes.exception.CampoAlunoException;
+import br.com.unialfa.nupes.exception.CampoProfessorNuloException;
+import br.com.unialfa.nupes.exception.NomBancaInvalidoException;
+import br.com.unialfa.nupes.exception.QuantidadeAlunosInvalidosException;
+import br.com.unialfa.nupes.util.Util;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import sun.util.calendar.BaseCalendar.Date;
 
-public class CadastroBancaController implements Initializable {
+public class CadastroBancaController extends PlainDocument implements Initializable {
+	PrincipalController pc = new PrincipalController();
+	@FXML
+	private AnchorPane panePrincipal;
 
 	@FXML
 	private JFXTextField txtNomeBanca;
@@ -38,7 +57,7 @@ public class CadastroBancaController implements Initializable {
 	private JFXComboBox<?> txtLeitor;
 
 	@FXML
-	private JFXButton btnAdicionaLeitor;
+	private JFXButton btnAdicionaLeitor, btnDeslogar;
 
 	@FXML
 	private JFXComboBox<Aluno> cbAluno;
@@ -75,11 +94,12 @@ public class CadastroBancaController implements Initializable {
 	static int idAluno2;
 	static int idAluno3;
 	private LocalDate data;
+	Util util = new Util();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
-
+			hideAlunos();
 			pegaAlunos();
 			pegaInfoProf();
 			pegouEnums();
@@ -113,12 +133,13 @@ public class CadastroBancaController implements Initializable {
 
 	public void pegouEnums() {
 		cbQtd.getItems().add(null);
+
 		cbQtd.getItems().addAll(EnumQtdAluno.values());
+		cbQtd.getSelectionModel().clearAndSelect(1);
 	}
 
 	@FXML
 	void adicionaProfOrientador(ActionEvent event) {
-		String qqr = cbQtd.getSelectionModel().getSelectedItem().toString();
 		int resposta = JOptionPane.showConfirmDialog(null,
 				"Deseja adicionar um novo Professor(a) Orientador(a) à BANCA?", null, JOptionPane.YES_NO_OPTION);
 		if (resposta == JOptionPane.YES_OPTION) {
@@ -134,39 +155,51 @@ public class CadastroBancaController implements Initializable {
 	}
 
 	@FXML
-	void save(ActionEvent event) throws SQLException {
-
+	void save(ActionEvent event) throws SQLException, NomBancaInvalidoException, QuantidadeAlunosInvalidosException,
+			CampoAlunoException, CampoProfessorNuloException {
+		validaAlunos();
+		validaProf();
+		validaQtdAluno();
 		selecionaAluno();
 		selecionaProfessores();
 		pegaValores(banca);
 		dao.save(banca);
 		dao.vinculaBanca(alunoArmazena, professor);
-
+		JOptionPane.showMessageDialog(null, "SALVO COM SUCESSO!");
+		limpaCampos();
 	}
 
-	void pegaValores(Banca b) {
-		banca.setNome(txtNomeBanca.getText());
-		
-		LocalDate temp = dtData.getValue();
-		java.sql.Date date = java.sql.Date.valueOf(temp);
-		banca.setData(date);
-		
+	void pegaValores(Banca b) throws NomBancaInvalidoException {
+		if (txtNomeBanca.getText().equals(" ") || txtNomeBanca.getText() == null || txtNomeBanca.getText().isEmpty()) {
+			throw new NomBancaInvalidoException();
+		} else if (txtNomeBanca.getText().matches("[A-zA-Z ]+")) {
+			txtNomeBanca.getText();
+			LocalDate temp = dtData.getValue();
+			java.sql.Date date = java.sql.Date.valueOf(temp);
+			banca.setData(date);
+		}
 
 	}
 
 	@FXML
-	void selecionaQtd(ActionEvent event) {
+	void selecionaQtd(ActionEvent event) throws QuantidadeAlunosInvalidosException {
+
+		validaQtdAluno();
 		String qqr = cbQtd.getSelectionModel().getSelectedItem().toString();
 		if (qqr == "1") {
-			cbAluno2.setVisible(false);
-			cbAluno3.setVisible(false);
+			cbAluno.setVisible(true);
+			txtAluno1.setVisible(true);
 			txtAluno2.setVisible(false);
 			txtAluno3.setVisible(false);
-
+			cbAluno2.setVisible(false);
+			cbAluno2.setVisible(false);
+			cbAluno3.setVisible(false);
+			cbAluno3.setVisible(false);
 		}
 		if (qqr == "2") {
 			cbAluno.setVisible(true);
 			cbAluno2.setVisible(true);
+			txtAluno1.setVisible(true);
 			txtAluno2.setVisible(true);
 			cbAluno3.setVisible(false);
 			txtAluno3.setVisible(false);
@@ -177,6 +210,7 @@ public class CadastroBancaController implements Initializable {
 			cbAluno3.setVisible(true);
 			txtAluno2.setVisible(true);
 			txtAluno3.setVisible(true);
+			txtAluno1.setVisible(true);
 		}
 
 	}
@@ -223,6 +257,97 @@ public class CadastroBancaController implements Initializable {
 		prof = cbOrientador.getValue();
 		prof.getId();
 		professor.add(prof);
+	}
+
+	@FXML
+	void voltarTela(ActionEvent event) throws IOException {
+
+		URL arquivoFXML;
+		arquivoFXML = getClass().getResource("../view/FXMLCadastro.fxml");
+		Parent fxmlParent = (Parent) FXMLLoader.load(arquivoFXML);
+		panePrincipal.getChildren().clear();
+		panePrincipal.getChildren().add(fxmlParent);
+
+	}
+
+	void validaQtdAluno() throws QuantidadeAlunosInvalidosException {
+
+		if (cbQtd.getSelectionModel().getSelectedItem() == null) {
+			throw new QuantidadeAlunosInvalidosException();
+		}
+	}
+
+	void hideAlunos() {
+		txtAluno1.setVisible(false);
+		txtAluno2.setVisible(false);
+		txtAluno3.setVisible(false);
+		cbAluno.setVisible(false);
+		cbAluno2.setVisible(false);
+		cbAluno3.setVisible(false);
+	}
+
+	void validaAlunos() throws CampoAlunoException {
+		String qqr = cbQtd.getSelectionModel().getSelectedItem().toString();
+
+		if (qqr == "1") {
+			if (cbAluno.getSelectionModel().getSelectedItem() == null) {
+				throw new CampoAlunoException();
+			}
+		}
+		if (qqr == "2") {
+			if (cbAluno.getSelectionModel().getSelectedItem() == null
+					|| cbAluno2.getSelectionModel().getSelectedItem() == null) {
+				throw new CampoAlunoException();
+			} else if (cbAluno.getSelectionModel().getSelectedItem() == null
+					&& cbAluno2.getSelectionModel().getSelectedItem() == null) {
+				throw new CampoAlunoException();
+			}
+		}
+		if (qqr == "3") {
+			if (cbAluno.getSelectionModel().getSelectedItem() == null
+					|| cbAluno2.getSelectionModel().getSelectedItem() == null
+					|| cbAluno3.getSelectionModel().getSelectedItem() == null) {
+				throw new CampoAlunoException();
+			}
+			if (cbAluno.getSelectionModel().getSelectedItem() == null
+					&& cbAluno2.getSelectionModel().getSelectedItem() == null) {
+				throw new CampoAlunoException();
+			}
+			if (cbAluno2.getSelectionModel().getSelectedItem() == null
+					&& cbAluno3.getSelectionModel().getSelectedItem() == null) {
+				throw new CampoAlunoException();
+			}
+		}
+
+	}
+
+	void validaProf() throws CampoProfessorNuloException {
+		if (cbLeitor.getSelectionModel().getSelectedItem() == null
+				|| cbOrientador.getSelectionModel().getSelectedItem() == null) {
+			throw new CampoProfessorNuloException();
+
+		} else if (cbLeitor.getSelectionModel().getSelectedItem() == null
+				&& cbLeitor.getSelectionModel().getSelectedItem() == null) {
+			throw new CampoProfessorNuloException();
+		}
+	}
+
+	void limpaCampos() {
+		txtNomeBanca.setText("");
+		cbAluno.getSelectionModel().clearAndSelect(0);
+		cbAluno2.getSelectionModel().clearAndSelect(0);
+		cbAluno3.getSelectionModel().clearAndSelect(0);
+		cbLeitor.getSelectionModel().clearAndSelect(0);
+		cbOrientador.getSelectionModel().clearAndSelect(0);
+		cbQtd.getSelectionModel().clearAndSelect(0);
+		dtData.setValue(null);
+		txtAluno1.setVisible(false);
+		txtAluno2.setVisible(false);
+		txtAluno3.setVisible(false);
+		cbAluno.setVisible(false);
+		cbAluno2.setVisible(false);
+		cbAluno3.setVisible(false);
+
 	}
 
 }

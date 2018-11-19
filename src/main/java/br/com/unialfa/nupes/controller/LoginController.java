@@ -6,11 +6,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.swing.JOptionPane;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
 import br.com.unialfa.nupes.configuration.ModuloConexao;
+import br.com.unialfa.nupes.exception.CamposInvalidosException;
+import br.com.unialfa.nupes.exception.RegraDeNegocioException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -43,7 +47,7 @@ public class LoginController {
 	Connection con = null;
 
 	@FXML
-	void logar() {
+	void logar() throws CamposInvalidosException{
 		String sql = "SELECT senha,login FROM usuario WHERE senha=? AND login=?";
 		try {
 			con = ModuloConexao.GetConnection();
@@ -51,11 +55,15 @@ public class LoginController {
 			pst.setString(1, txtUsuario.getText());
 			pst.setString(2, txtSenha.getText());
 			rs = pst.executeQuery();
+			verificaCampos();
 			if (rs.next()) {
+				
 				AbrePrincipal();
+			}else {
+				JOptionPane.showMessageDialog(null, "Usuário e/ou Senha INVÁLIDOS");
 			}
 		} catch (Exception e) {
-			System.out.println("Erro!" + e.getMessage());
+			e.printStackTrace();
 		}
 	}
 
@@ -65,5 +73,12 @@ public class LoginController {
 		Parent  fxmlParent = (Parent)FXMLLoader.load(arquivoFXML);
 		paneLogin.getChildren().clear();
 		paneLogin.getChildren().add(fxmlParent);
+	}
+
+	private void verificaCampos() throws CamposInvalidosException{
+	if(txtUsuario.getText().equals("") || txtUsuario.getText() == null	||txtUsuario.getText().isEmpty()) {
+		throw new CamposInvalidosException();
+	}
+	
 	}
 }
