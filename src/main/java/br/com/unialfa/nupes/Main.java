@@ -12,7 +12,7 @@ public class Main extends Application {
 		try {
 			// AnchorPane root =
 			// FXMLLoader.load(getClass().getResource("./view/FXMLLogin.fxml"));
-			AnchorPane root = FXMLLoader.load(getClass().getResource("./view/FXMLCadastroBanca.fxml"));
+			AnchorPane root = FXMLLoader.load(getClass().getResource("./view/FXMLGerarSalvarDoc.fxml"));
 			Scene scene = new Scene(root, 774, 521);
 			primaryStage.setTitle("Login");
 			primaryStage.setScene(scene);

@@ -1,32 +1,31 @@
 package br.com.unialfa.nupes.entity;
 
 public class Declaracao {
+	private String nProfOrientador2;
+	private String nProfOrientador;
+	private String semestre;
+	private String nomeBanca;
+	private String aluno1;
+	private String aluno2;
+	private String aluno3;
+	private String nomeCurso;
+	private String nProfLeitor1;
+	private String nProfLeitor2;
 
-	String id, curso, banca, semestre, professorOrientador, professorLeitorA,
-	professorLeitorB, data;
-
-	public String getId() {
-		return id;
+	public String getnProfOrientador2() {
+		return nProfOrientador2;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setnProfOrientador2(String nProfOrientador2) {
+		this.nProfOrientador2 = nProfOrientador2;
 	}
 
-	public String getCurso() {
-		return curso;
+	public String getnProfOrientador() {
+		return nProfOrientador;
 	}
 
-	public void setCurso(String curso) {
-		this.curso = curso;
-	}
-
-	public String getBanca() {
-		return banca;
-	}
-
-	public void setBanca(String banca) {
-		this.banca = banca;
+	public void setnProfOrientador(String nProfOrientador) {
+		this.nProfOrientador = nProfOrientador;
 	}
 
 	public String getSemestre() {
@@ -37,37 +36,65 @@ public class Declaracao {
 		this.semestre = semestre;
 	}
 
-	public String getProfessorOrientador() {
-		return professorOrientador;
+	public String getNomeBanca() {
+		return nomeBanca;
 	}
 
-	public void setProfessorOrientador(String professorOrientador) {
-		this.professorOrientador = professorOrientador;
+	public void setNomeBanca(String nomeBanca) {
+		this.nomeBanca = nomeBanca;
 	}
 
-	public String getProfessorLeitorA() {
-		return professorLeitorA;
+	public String getAluno1() {
+		return aluno1;
 	}
 
-	public void setProfessorLeitorA(String professorLeitorA) {
-		this.professorLeitorA = professorLeitorA;
+	public void setAluno1(String aluno1) {
+		this.aluno1 = aluno1;
 	}
 
-	public String getProfessorLeitorB() {
-		return professorLeitorB;
+	public String getAluno2() {
+		return aluno2;
 	}
 
-	public void setProfessorLeitorB(String professorLeitorB) {
-		this.professorLeitorB = professorLeitorB;
+	public void setAluno2(String aluno2) {
+		this.aluno2 = aluno2;
 	}
 
-	public String getData() {
-		return data;
+	public String getAluno3() {
+		return aluno3;
 	}
 
-	public void setData(String data) {
-		this.data = data;
+	public void setAluno3(String aluno3) {
+		this.aluno3 = aluno3;
 	}
-	
-	
+
+	public String getNomeCurso() {
+		return nomeCurso;
+	}
+
+	public void setNomeCurso(String nomeCurso) {
+		this.nomeCurso = nomeCurso;
+	}
+
+	public String getnProfLeitor1() {
+		return nProfLeitor1;
+	}
+
+	public void setnProfLeitor1(String nProfLeitor1) {
+		this.nProfLeitor1 = nProfLeitor1;
+	}
+
+	public String getnProfLeitor2() {
+		return nProfLeitor2;
+	}
+
+	public void setnProfLeitor2(String nProfLeitor2) {
+		this.nProfLeitor2 = nProfLeitor2;
+	}
+
+	@Override
+	public String toString() {
+		return nomeBanca;
+	}
+
 }

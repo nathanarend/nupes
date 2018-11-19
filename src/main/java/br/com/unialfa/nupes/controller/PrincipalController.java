@@ -32,18 +32,8 @@ public class PrincipalController {
 	private Button btnRelatorio;
 
 	@FXML
-	private Button btnCadCurso,btnCadProfessor;
+	private Button btnCadCurso, btnCadProfessor, btnDeclaracao;
 
-	@FXML
-	void cadastrar(ActionEvent event) throws IOException {
-		URL arquivoFXML;
-		arquivoFXML = getClass().getResource("../view/FXMLCadastro.fxml");
-		Parent fxmlParent = (Parent) FXMLLoader.load(arquivoFXML);
-		PanePrincipal.getChildren().clear();
-		PanePrincipal.getChildren().add(fxmlParent);
-		// Scene scene = new Scene(fxmlParent, 774, 521);
-
-	}
 //Stage
 //	Scene
 //	Titulo
@@ -61,6 +51,17 @@ public class PrincipalController {
 	}
 
 	@FXML
+	void cadastrar(ActionEvent event) throws IOException {
+		URL arquivoFXML;
+		arquivoFXML = getClass().getResource("../view/FXMLCadastro.fxml");
+		Parent fxmlParent = (Parent) FXMLLoader.load(arquivoFXML);
+		PanePrincipal.getChildren().clear();
+		PanePrincipal.getChildren().add(fxmlParent);
+		// Scene scene = new Scene(fxmlParent, 774, 521);
+
+	}
+
+	@FXML
 	void CadProfessor(ActionEvent event) throws IOException {
 		Stage stage = new Stage();
 		AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("../view/FXMLCadastroProfessor.fxml"));
@@ -68,18 +69,26 @@ public class PrincipalController {
 		stage.setTitle("Cadastro Aluno.");
 		stage.setScene(scene);
 		stage.show();
-	
 
 	}
-	
+
 	@FXML
-	void cadBanca (ActionEvent event ) throws IOException{
+	void cadBanca(ActionEvent event) throws IOException {
 		Stage stage = new Stage();
 		AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("../view/FXMLCadastroBanca.fxml"));
 		Scene scene = new Scene(root);
 		stage.setTitle("Cadastro Aluno.");
 		stage.setScene(scene);
 		stage.show();
-	
+
+	}
+
+	@FXML
+	void abreDoc(ActionEvent event) throws IOException {
+		URL arquivoFXML;
+		arquivoFXML = getClass().getResource("../view/FXMLGerarSalvarDoc.fxml");
+		Parent fxmlParent = (Parent) FXMLLoader.load(arquivoFXML);
+		PanePrincipal.getChildren().clear();
+		PanePrincipal.getChildren().add(fxmlParent);
 	}
 }

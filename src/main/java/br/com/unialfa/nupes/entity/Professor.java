@@ -4,6 +4,7 @@ import br.com.unialfa.nupes.enumerator.EnumGrauAcademico;
 
 public class Professor extends Pessoa {
 	private int id;
+
 	public int getId() {
 		return id;
 	}
@@ -12,6 +13,24 @@ public class Professor extends Pessoa {
 		this.id = id;
 	}
 
+	public String getOrientador() {
+		return Orientador;
+	}
+
+	public void setOrientador(String orientador) {
+		Orientador = orientador;
+	}
+
+	public String getLeitor() {
+		return Leitor;
+	}
+
+	public void setLeitor(String leitor) {
+		Leitor = leitor;
+	}
+
+	private String Orientador;
+	private String Leitor;
 	private String matricula;
 	private String titulacao;
 	private int id_curso;
@@ -29,7 +48,7 @@ public class Professor extends Pessoa {
 
 	}
 
-	  public Professor(String matricula, String titulacao, int id_curso) {
+	public Professor(String matricula, String titulacao, int id_curso) {
 		this.matricula = matricula;
 		this.titulacao = titulacao;
 		this.id_curso = id_curso;
@@ -66,7 +85,7 @@ public class Professor extends Pessoa {
 	public void setTutulacao(String titulacao) {
 		this.titulacao = titulacao;
 	}
-	
+
 	@Override
 	public String toString() {
 		return nome;

@@ -35,6 +35,7 @@ public class CadastroAlunoController implements Initializable {
 	@FXML
 	private JFXComboBox<EnumSexo> cbSexo;
 	AlunoDAO aluno = new AlunoDAO();
+	
 	Aluno a = new Aluno();
 	Curso c = new Curso();
 

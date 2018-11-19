@@ -6,6 +6,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -22,27 +23,31 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <JFXButton layoutX="7.0" layoutY="13.0" text="VOLTAR" />
+            <JFXButton layoutX="5.0" layoutY="3.0" prefHeight="40.0" prefWidth="56.0" styleClass="botaoVoltar" stylesheets="@../application/application.css" text=" " />
          </children>
       </Pane>
       <Group layoutX="102.0" layoutY="185.0" />
-      <JFXTextField fx:id="txtNomeBanca" layoutX="137.0" layoutY="98.0" prefHeight="29.0" prefWidth="484.0" />
-      <JFXComboBox layoutX="672.0" layoutY="156.0" />
+      <JFXTextField fx:id="txtNomeBanca" layoutX="137.0" layoutY="98.0" prefHeight="29.0" prefWidth="367.0" />
+      <JFXComboBox fx:id="cbQtd" layoutX="672.0" layoutY="156.0" onAction="#selecionaQtd" promptText="-" />
       <JFXComboBox fx:id="cbOrientador" layoutX="210.0" layoutY="155.0" prefHeight="26.0" prefWidth="291.0" />
       <JFXComboBox fx:id="cbLeitor" layoutX="173.0" layoutY="210.0" prefHeight="26.0" prefWidth="330.0" />
-      <JFXButton fx:id="btnAdicionaLeitor" layoutX="503.0" layoutY="210.0" text="ADICIONAR MAIS" />
-      <JFXComboBox fx:id="cbAluno" layoutX="79.0" layoutY="254.0" prefHeight="26.0" prefWidth="428.0" />
-      <JFXComboBox fx:id="cbAluno2" layoutX="79.0" layoutY="306.0" prefHeight="26.0" prefWidth="428.0" />
-      <JFXComboBox fx:id="cbAluno3" layoutX="79.0" layoutY="358.0" prefHeight="26.0" prefWidth="428.0" />
-      <Label layoutX="36.0" layoutY="420.0" text="DATA APRESENTAÇÃO:" />
-      <JFXDatePicker fx:id="dtData" layoutX="167.0" layoutY="415.0" />
+      <JFXButton fx:id="btnAdicionaLeitor" layoutX="515.0" layoutY="213.0" minHeight="26.0" minWidth="26.0" onAction="#adicionaProfOrientador" prefHeight="16.0" prefWidth="15.0" styleClass="botaoAdd" stylesheets="@../application/application.css" text=" " />
+      <JFXComboBox fx:id="cbAluno" layoutX="102.0" layoutY="300.0" prefHeight="26.0" prefWidth="428.0" />
+      <JFXComboBox fx:id="cbAluno2" layoutX="102.0" layoutY="343.0" prefHeight="26.0" prefWidth="428.0" />
+      <JFXComboBox fx:id="cbAluno3" layoutX="102.0" layoutY="393.0" prefHeight="26.0" prefWidth="428.0" />
+      <Label layoutX="29.0" layoutY="261.0" text="DATA APRESENTAÇÃO:" />
+      <JFXDatePicker fx:id="dtData" layoutX="173.0" layoutY="249.0" prefHeight="26.0" prefWidth="162.0" />
       <Label layoutX="29.0" layoutY="112.0" text="NOME DA BANCA:" />
-      <Label layoutX="29.0" layoutY="258.0" text="ALUNO:" />
+      <Label fx:id="txtAluno1" layoutX="29.0" layoutY="310.0" text="ALUNO 01 : " />
       <Label layoutX="29.0" layoutY="168.0" text="PROFESSOR(A) ORIENTADOR(A):" />
       <Label layoutX="29.0" layoutY="214.0" text="PROFESSOR(A) LEITOR(A):" />
-      <Label layoutX="29.0" layoutY="310.0" text="ALUNO:" />
-      <Label layoutX="29.0" layoutY="362.0" text="ALUNO:" />
-      <JFXButton fx:id="btnSalvar" layoutX="613.0" layoutY="459.0" text="SALVAR" />
-      <Label layoutX="545.0" layoutY="168.0" text="QUANTIDADE ALUNOS" />
+      <Label fx:id="txtAluno2" layoutX="31.0" layoutY="354.0" text="ALUNO 02 :" />
+      <Label fx:id="txtAluno3" layoutX="29.0" layoutY="403.0" text="ALUNO 03 :" />
+      <JFXButton fx:id="btnSalvar" layoutX="647.0" layoutY="451.0" minHeight="29.0" minWidth="66.0" onAction="#save" prefHeight="29.0" prefWidth="66.0" stylesheets="@../application/application.css" text="SALVAR" />
+      <Label layoutX="545.0" layoutY="168.0" text="QUANTIDADE ALUNOS:" />
+      <Separator layoutX="10.0" layoutY="59.0" prefHeight="3.0" prefWidth="750.0" />
+      <Separator layoutX="8.0" layoutY="506.0" prefHeight="3.0" prefWidth="750.0" />
+      <Separator layoutX="8.0" layoutY="57.0" orientation="VERTICAL" prefHeight="448.0" prefWidth="1.0" />
+      <Separator layoutX="761.0" layoutY="58.0" orientation="VERTICAL" prefHeight="448.0" prefWidth="1.0" />
    </children>
 </AnchorPane>

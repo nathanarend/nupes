@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.swing.JOptionPane;
+
 import com.mysql.cj.protocol.Resultset;
 
 import br.com.unialfa.nupes.configuration.ModuloConexao;
@@ -58,6 +60,7 @@ public class AlunoDAO implements DAOInterface<Aluno, Curso> {
 
 			stmt.executeUpdate();
 			conn.commit();
+			JOptionPane.showMessageDialog(null, "SALVO COM SUCESSO!");
 			System.out.println("Salvo com sucesso!");
 			stmt.close();
 			conn.close();
