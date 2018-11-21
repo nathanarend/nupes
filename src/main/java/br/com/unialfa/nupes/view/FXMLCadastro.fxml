@@ -19,6 +19,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
+            <JFXButton fx:id="btnVoltar" layoutX="15.0" layoutY="9.0" onAction="#voltar" prefHeight="27.0" prefWidth="28.0" styleClass="botaoVoltar" stylesheets="@../application/application.css" text=" " />
          </children>
       </Pane>
       <Group layoutX="170.0" layoutY="189.0">
@@ -37,6 +38,5 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnVoltar" layoutX="15.0" layoutY="3.0" onAction="#voltar" prefHeight="40.0" prefWidth="56.0" styleClass="botaoVoltar" stylesheets="@../application/application.css" text=" " />
    </children>
 </AnchorPane>

@@ -9,11 +9,13 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
 import br.com.unialfa.nupes.dao.ProfessorDAO;
-
 import br.com.unialfa.nupes.entity.Curso;
 import br.com.unialfa.nupes.entity.Professor;
 import br.com.unialfa.nupes.enumerator.EnumGrauAcademico;
 import br.com.unialfa.nupes.enumerator.EnumSexo;
+import br.com.unialfa.nupes.exception.MatriculaNulaException;
+import br.com.unialfa.nupes.exception.NomeProfessorNuloException;
+import br.com.unialfa.nupes.exception.SexoNuloException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,6 +36,7 @@ public class CadastroProfessorController implements Initializable {
 
 	@FXML
 	private JFXComboBox<EnumGrauAcademico> cbTitularidade;
+
 	@FXML
 	private JFXComboBox<EnumSexo> cbSexo;
 
@@ -50,18 +53,61 @@ public class CadastroProfessorController implements Initializable {
 
 	}
 
-	private void catchitems(Professor prof, Curso curso) {
+	private void catchitems(Professor prof, Curso curso) throws SexoNuloException {
 		prof.setNome(txtNome.getText());
 		prof.setMatricula(txtMatricula.getText());
 		prof.setEnumGrauAcademico(cbTitularidade.getValue());
-		prof.setEnumSexo(cbSexo.getValue());
+
+		if (cbSexo.getSelectionModel().getSelectedItem() != null) {
+			prof.setEnumSexo(cbSexo.getValue());
+		} else {
+			throw new SexoNuloException();
+		}
 
 	}
+
 	@FXML
-	private void save(ActionEvent event) throws SQLException {
+	private void save(ActionEvent event) throws SQLException, NomeProfessorNuloException, SexoNuloException, MatriculaNulaException {
 		catchitems(professor, curso);
 		pd.salvar(professor, curso);
-
+		validaNome(professor);
+		validaMatricula(professor);
+		cleanAll();
 	}
 
+	void validaNome(Professor nome) throws NomeProfessorNuloException {
+
+		StringBuilder builder = new StringBuilder();
+
+		if (txtNome.getText().matches("[A-zA-Z]+")) {
+			nome.setNome(txtNome.getText());
+
+		} else {
+			builder.append(txtNome.getText());
+			if (txtNome.getText().isEmpty() || txtNome.getText() == null) {
+				throw new NomeProfessorNuloException();
+			}
+
+			String temp = builder.replace(1, 50, " ").toString();
+			if (temp == " ") {
+				throw new NomeProfessorNuloException();
+			}
+		}
+	}
+
+	void validaMatricula(Professor matricula) throws MatriculaNulaException {
+
+		if (txtMatricula.getText().matches("[0-9]+")) {
+			matricula.setMatricula(txtMatricula.getText());
+		} else {
+			throw new MatriculaNulaException();
+		}
+	}
+	@FXML
+	void cleanAll(ActionEvent event) {
+		cbSexo.getSelectionModel().clearAndSelect(0);
+		txtMatricula.setText("");
+		txtNome.setText("");
+		cbTitularidade.getSelectionModel().clearAndSelect(0);
+	}
 }
