@@ -2,9 +2,12 @@ package br.com.unialfa.nupes.controller;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -19,6 +22,7 @@ import br.com.unialfa.nupes.enumerator.EnumSexo;
 import br.com.unialfa.nupes.exception.AlunoCadastroExceptionNome;
 import br.com.unialfa.nupes.exception.CampoAlunoException;
 import br.com.unialfa.nupes.exception.CampoMatriculaException;
+import br.com.unialfa.nupes.exception.SexoNuloException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -61,26 +65,15 @@ public class CadastroAlunoController implements Initializable {
 	private void catchvalues(Aluno a, Curso c) throws AlunoCadastroExceptionNome, CampoMatriculaException {
 
 		validaNome();
-		StringBuilder builder2 = new StringBuilder();
-		builder2.append(txtMatricula.getText());
-		String temp2 = builder2.replace(1, 50, " ").toString();
-		if (temp2 == " ") {
-			throw new CampoMatriculaException();
-		}
-
-		if (txtMatricula.getText().matches("[0-9 ]+")) {
-			a.setMatricula(txtMatricula.getText());
-		} else {
-			throw new CampoMatriculaException();
-		}
-	
-		
+		validaMatricula();
 
 	}
 
 	@FXML
-	private void save(ActionEvent event) throws SQLException, AlunoCadastroExceptionNome, CampoMatriculaException {
+	private void save(ActionEvent event)
+			throws SQLException, AlunoCadastroExceptionNome, CampoMatriculaException, SexoNuloException {
 		catchvalues(a, c);
+		validaSexoECurso();
 		aluno.salvar(a, c);
 
 	}
@@ -89,8 +82,10 @@ public class CadastroAlunoController implements Initializable {
 
 		StringBuilder builder = new StringBuilder();
 
-		if (txtNome.getText().matches("[A-zA-Z]+")) {
+		if (txtNome.getText().matches("[A-zA-Z ]+")) {
 			a.setNome(txtNome.getText());
+			c.setCurso(cbCurso.getValue());
+			a.setEnumSexo(cbSexo.getValue());
 
 		} else {
 			throw new AlunoCadastroExceptionNome();
@@ -106,7 +101,23 @@ public class CadastroAlunoController implements Initializable {
 			throw new AlunoCadastroExceptionNome();
 		}
 	}
-	void validaMatricula() throws CampoMatriculaException{
-		
+
+	void validaMatricula() throws CampoMatriculaException {
+
+		if (txtMatricula.getText().matches("[0-9]+")) {
+			a.setMatricula(txtMatricula.getText());
+		} else if (txtMatricula.getText().matches(" ") || txtMatricula.getText().equals("  ")
+				|| txtMatricula.getText().matches("[ -Z]+")) {
+			throw new CampoMatriculaException();
+		} else {
+			throw new CampoMatriculaException();
+		}
+
+	}
+
+	void validaSexoECurso() throws SexoNuloException {
+		if (cbSexo.getSelectionModel().getSelectedItem() == null) {
+			throw new SexoNuloException();
+		}
 	}
 }

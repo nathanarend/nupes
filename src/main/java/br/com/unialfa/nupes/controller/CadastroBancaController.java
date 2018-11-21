@@ -42,7 +42,7 @@ import javafx.stage.Stage;
 import sun.util.calendar.BaseCalendar.Date;
 
 public class CadastroBancaController extends PlainDocument implements Initializable {
-	PrincipalController pc = new PrincipalController();
+
 	@FXML
 	private AnchorPane panePrincipal;
 
@@ -170,6 +170,7 @@ public class CadastroBancaController extends PlainDocument implements Initializa
 	}
 
 	void pegaValores(Banca b) throws NomBancaInvalidoException {
+
 		if (txtNomeBanca.getText().equals(" ") || txtNomeBanca.getText() == null || txtNomeBanca.getText().isEmpty()) {
 			throw new NomBancaInvalidoException();
 		} else if (txtNomeBanca.getText().matches("[A-zA-Z ]+")) {

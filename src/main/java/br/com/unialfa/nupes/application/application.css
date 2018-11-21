@@ -34,3 +34,16 @@
 .botaoSalvar{
 	-fx-background-image:url("../image/salvar.png")
 }
+.fundo{
+	-fx-background-image:url("../image/FUNDO.png")
+}
+.fundocad{
+	-fx-background-image:url("../image/FUNDOCAD.png")
+}
+.fundocadp{
+	-fx-background-image:url("../image/FUNDOCADP.png")
+}
+.fundoprincipal{
+		-fx-background-image:url("../image/FUNDOPRINCIPAL.png")
+	
+}

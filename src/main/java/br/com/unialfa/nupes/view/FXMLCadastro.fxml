@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="PaneCadastro1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.unialfa.nupes.controller.PrincipalController">
+<AnchorPane fx:id="PaneCadastro1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="774.0" styleClass="fundoprincipal" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.unialfa.nupes.controller.PrincipalController">
    <children>
       <Pane fx:id="PaneCadastro" prefHeight="47.0" prefWidth="774.0" style="-fx-background-color: #5882FA;">
          <children>

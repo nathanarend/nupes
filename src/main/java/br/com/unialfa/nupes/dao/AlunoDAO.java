@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 
 import javax.swing.JOptionPane;
@@ -49,14 +50,8 @@ public class AlunoDAO implements DAOInterface<Aluno, Curso> {
 			String s = aluno.getEnumSexo().getSexo();
 			stmt.setString(3, s);
 			stmt.setInt(4, idgerado);
-			
-//		    ResultSet rs = stmt.getGeneratedKeys();
-//			rs.next();
-//
-//			int IdGenerated = rs.getInt(1);
-//			aluno.setId_curso(IdGenerated);
 
-			
+
 
 			stmt.executeUpdate();
 			conn.commit();
@@ -65,9 +60,9 @@ public class AlunoDAO implements DAOInterface<Aluno, Curso> {
 			stmt.close();
 			conn.close();
 
-		} catch (SQLException e) {
-			System.out.println("ops");
-			e.printStackTrace();
+		} catch (SQLIntegrityConstraintViolationException e) {
+			JOptionPane.showMessageDialog(null, "MATRÍCULA JÁ CADASTRADA", "ERRO", JOptionPane.INFORMATION_MESSAGE);
+
 		}
 	}
 

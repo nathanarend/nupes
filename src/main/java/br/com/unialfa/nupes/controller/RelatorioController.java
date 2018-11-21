@@ -3,12 +3,11 @@ package br.com.unialfa.nupes.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -16,7 +15,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 
-import br.com.unialfa.nupes.configuration.ModuloConexao;
 import br.com.unialfa.nupes.dao.RelatorioDAO;
 import br.com.unialfa.nupes.entity.Aluno;
 import br.com.unialfa.nupes.entity.Banca;
@@ -25,9 +23,16 @@ import br.com.unialfa.nupes.entity.Declaracao;
 import br.com.unialfa.nupes.entity.Professor;
 import br.com.unialfa.nupes.enumerator.EnumCurso;
 import br.com.unialfa.nupes.enumerator.EnumQtdAluno;
+import br.com.unialfa.nupes.exception.CampoCursoVazioException;
+import br.com.unialfa.nupes.exception.CampoNomeBancaVazioException;
+import br.com.unialfa.nupes.exception.CamposProfessoresVazioException;
+import br.com.unialfa.nupes.exception.PermiteApenas3AlunosException;
+import br.com.unialfa.nupes.exception.SemestreVazioException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -147,7 +152,15 @@ public class RelatorioController implements Initializable {
 		pegaEnum();
 		pegaAlunos();
 		pegaProfessor();
-		pegaBanca();
+		try {
+			pegaBanca();
+		} catch (CampoNomeBancaVazioException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
@@ -192,36 +205,51 @@ public class RelatorioController implements Initializable {
 		cbNomeCurso.getItems().addAll(EnumCurso.values());
 	}
 
-	public List<Banca> pegaBanca() {
+	public List<Banca> pegaBanca() throws CampoNomeBancaVazioException, SQLException {
 		List<Banca> banca = new ArrayList<>();
 		try {
 			banca = dao.listaBanca();
 			cbNomeBanca.getItems().add(null);
 			cbNomeBanca.getItems().addAll(banca);
 
-		} catch (SQLException e) {
+		} catch (CampoNomeBancaVazioException e) {
 			e.printStackTrace();
 		}
 		return banca;
 	}
 
 	@FXML
-	void selecionaQtd(ActionEvent event) {
+	void voltar(ActionEvent event) throws IOException {
+		URL arquivoFXML;
+		arquivoFXML = getClass().getResource("../view/FXMLPrincipal.fxml");
+		Parent fxmlParent = (Parent) FXMLLoader.load(arquivoFXML);
+		PanePrincipal.getChildren().clear();
+		PanePrincipal.getChildren().add(fxmlParent);
+	}
+
+	@FXML
+	void selecionaQtd(ActionEvent event) throws PermiteApenas3AlunosException {
 		String qqr = cbQtdA.getSelectionModel().getSelectedItem().toString();
 		if (qqr == "1") {
+			cbAluno1.setVisible(false);
 			cbAluno2.setVisible(false);
 			cbAluno3.setVisible(false);
+			lblA1.setVisible(false);
 			lblA2.setVisible(false);
 			lbA3.setVisible(false);
 
+			throw new PermiteApenas3AlunosException();
+
 		}
 		if (qqr == "2") {
-			cbAluno1.setVisible(true);
-			cbAluno2.setVisible(true);
+			cbAluno1.setVisible(false);
+			cbAluno2.setVisible(false);
 			cbAluno3.setVisible(false);
+			lblA1.setVisible(false);
+			lblA2.setVisible(false);
 			lbA3.setVisible(false);
-			lblA1.setVisible(true);
-			lblA2.setVisible(true);
+
+			throw new PermiteApenas3AlunosException();
 		}
 		if (qqr == "3") {
 			cbAluno1.setVisible(true);
@@ -234,20 +262,23 @@ public class RelatorioController implements Initializable {
 
 	}
 
-	void pegaAllValues() {
+	void pegaAllValues() throws CampoNomeBancaVazioException, CampoCursoVazioException, CamposProfessoresVazioException,
+			SemestreVazioException {
 
-
+		validaCbs();
 		try {
+
 			Curso curso = new Curso();
 			Aluno aluno = new Aluno();
 			Banca banca = new Banca();
 			Professor professor = new Professor();
 			Declaracao declaracao = new Declaracao();
+			validasemestre(txtSemestre, declaracao);
 			List<Declaracao> dec = new ArrayList<>();
 			aluno = cbAluno1.getValue();
 			String Aluno1 = aluno.getNome();
 			declaracao.setAluno1(Aluno1);
-	
+
 			aluno = cbAluno2.getValue();
 			String Aluno2 = aluno.getNome();
 			declaracao.setAluno2(Aluno2);
@@ -255,16 +286,14 @@ public class RelatorioController implements Initializable {
 			aluno = cbAluno3.getValue();
 			String Aluno3 = aluno.getNome();
 			declaracao.setAluno3(Aluno3);
-	
+
 			EnumCurso enums = cbNomeCurso.getValue();
 			String nomeCurso = enums.getNomeCurso();
 			declaracao.setNomeCurso(nomeCurso);
-	
+
 			banca = cbNomeBanca.getValue();
 			String nomeBanca = banca.getNome();
 			declaracao.setNomeBanca(nomeBanca);
-
-			declaracao.setSemestre(txtSemestre.getText());
 
 			professor = cbOrientador.getValue();
 			String orientador = professor.getNome();
@@ -272,11 +301,11 @@ public class RelatorioController implements Initializable {
 
 			String orientador2 = professor.getNome();
 			declaracao.setnProfOrientador2(orientador);
-	
+
 			professor = cbLeitor1.getValue();
 			String pl = professor.getNome();
 			declaracao.setnProfLeitor1(pl);
-	
+
 			professor = CBLeitor2.getValue();
 			String pl2 = professor.getNome();
 			declaracao.setnProfLeitor2(pl2);
@@ -293,9 +322,61 @@ public class RelatorioController implements Initializable {
 	}
 
 	@FXML
-	void geraPdf(ActionEvent event) {
+	void geraPdf(ActionEvent event) throws CampoNomeBancaVazioException, CampoCursoVazioException,
+			CamposProfessoresVazioException, SemestreVazioException {
+
 		pegaAllValues();
+		cleanAll();
 
 	}
 
+	@FXML
+	void limpa(ActionEvent event) {
+		cleanAll();
+	}
+
+	void validaCbs() throws CampoNomeBancaVazioException, CampoCursoVazioException, CamposProfessoresVazioException,
+			SemestreVazioException {
+		if (cbNomeBanca.getSelectionModel().getSelectedItem() == null) {
+			throw new CampoNomeBancaVazioException();
+		}
+
+		if (cbNomeCurso.getSelectionModel().getSelectedItem() == null) {
+			throw new CampoCursoVazioException();
+		}
+
+		if (cbOrientador.getSelectionModel().getSelectedItem() == null) {
+			throw new CamposProfessoresVazioException();
+		}
+
+		if (cbLeitor1.getSelectionModel().getSelectedItem() == null) {
+			throw new CamposProfessoresVazioException();
+		}
+
+		if (CBLeitor2.getSelectionModel().getSelectedItem() == null) {
+			throw new CamposProfessoresVazioException();
+		}
+
+	}
+
+	void validasemestre(JFXTextField f, Declaracao d) throws SemestreVazioException {
+		if (txtSemestre.getText().matches("[0-9 -]+")) {
+			d.setSemestre(f.getText());
+		} else {
+			throw new SemestreVazioException();
+		}
+	}
+
+	void cleanAll() {
+		cbAluno1.getSelectionModel().clearAndSelect(0);
+		cbAluno2.getSelectionModel().clearAndSelect(0);
+		cbAluno3.getSelectionModel().clearAndSelect(0);
+		cbLeitor1.getSelectionModel().clearAndSelect(0);
+		cbNomeBanca.getSelectionModel().clearAndSelect(0);
+		cbNomeCurso.getSelectionModel().clearAndSelect(0);
+		cbOrientador.getSelectionModel().clearAndSelect(0);
+		cbQtdA.getSelectionModel().clearAndSelect(0);
+		CBLeitor2.getSelectionModel().clearAndSelect(0);
+		txtSemestre.setText("");
+	}
 }

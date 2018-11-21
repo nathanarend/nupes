@@ -12,15 +12,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane fx:id="PanePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.unialfa.nupes.controller.RelatorioController">
+<AnchorPane fx:id="PanePrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="774.0" styleClass="fundocad" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.unialfa.nupes.controller.RelatorioController">
    <children>
-      <Pane prefHeight="47.0" prefWidth="774.0" style="-fx-background-color: #5882FA;">
+      <Pane prefHeight="47.0" prefWidth="774.0" style="-fx-background-color: #5882FA;" stylesheets="@../application/application.css">
          <children>
-            <JFXButton id="btnDeslogar" fx:id="btnDeslogar" layoutX="686.0" layoutY="9.0" style="-fx-background-color: #f2f2f2; -fx-padding: 6; -fx-background-radius: 15;" text="Deslogar" />
-            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="11.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 15;" text="Voltar" />
+            <JFXButton fx:id="btnVoltar" buttonType="RAISED" layoutX="14.0" layoutY="11.0" onAction="#voltar" style="-fx-background-color: #FFFFFF;" text="Voltar" textFill="#0d0d0d" />
          </children>
       </Pane>
-      <TabPane layoutY="47.0" prefHeight="476.0" prefWidth="774.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="47.0" prefHeight="476.0" prefWidth="774.0" styleClass="fundocad" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Novo Documento">
             <content>
@@ -30,15 +29,15 @@
                         <JFXComboBox fx:id="cbNomeCurso" layoutX="216.0" layoutY="26.0" prefHeight="25.0" prefWidth="370.0" />
                         <Label layoutX="53.0" layoutY="69.0" text="Nome Banca:" />
                         <JFXComboBox fx:id="cbNomeBanca" layoutX="216.0" layoutY="58.0" prefHeight="25.0" prefWidth="370.0" />
-                        <JFXComboBox fx:id="cbOrientador" layoutX="258.0" layoutY="123.0" prefHeight="25.0" prefWidth="370.0" />
+                        <JFXComboBox fx:id="cbOrientador" layoutX="214.0" layoutY="123.0" prefHeight="25.0" prefWidth="370.0" />
                         <Label layoutX="53.0" layoutY="100.0" text="Semetre de Apresentação:" />
                         <Label layoutX="53.0" layoutY="130.0" text="Professor(a) Orientador(a):" />
-                        <JFXComboBox fx:id="cbLeitor1" layoutX="259.0" layoutY="157.0" prefHeight="25.0" prefWidth="370.0" />
+                        <JFXComboBox fx:id="cbLeitor1" layoutX="215.0" layoutY="157.0" prefHeight="25.0" prefWidth="370.0" />
                         <Label layoutX="54.0" layoutY="166.0" text="Professor(a) Leitor(a):" />
                         <Label layoutX="55.0" layoutY="201.0" text="Professor(a) Leitor(a):" />
-                        <JFXComboBox fx:id="CBLeitor2" layoutX="259.0" layoutY="194.0" prefHeight="25.0" prefWidth="370.0" />
+                        <JFXComboBox fx:id="CBLeitor2" layoutX="215.0" layoutY="194.0" prefHeight="25.0" prefWidth="370.0" />
                         <Label layoutX="54.0" layoutY="238.0" text="Quantidade de Alunos:" />
-                        <JFXComboBox fx:id="cbQtdA" layoutX="212.0" layoutY="229.0" onAction="#selecionaQtd" prefHeight="25.0" prefWidth="59.0" />
+                        <JFXComboBox fx:id="cbQtdA" layoutX="215.0" layoutY="229.0" onAction="#selecionaQtd" prefHeight="25.0" prefWidth="59.0" />
                         <Label fx:id="lblA1" layoutX="54.0" layoutY="270.0" text="Aluno 1:" />
                         <Label fx:id="lblA2" layoutX="54.0" layoutY="303.0" text="Aluno 2:" />
                         <Label fx:id="lbA3" layoutX="54.0" layoutY="337.0" text="Aluno 3:" />
@@ -46,14 +45,12 @@
                         <JFXComboBox fx:id="cbAluno2" layoutX="216.0" layoutY="296.0" prefHeight="25.0" prefWidth="370.0" />
                         <JFXComboBox fx:id="cbAluno3" layoutX="216.0" layoutY="330.0" prefHeight="25.0" prefWidth="370.0" />
                         <JFXButton fx:id="btnNovo" buttonType="RAISED" layoutX="65.0" layoutY="382.0" onAction="#geraPdf" prefHeight="47.0" prefWidth="64.0" style="-fx-background-radius: 15; -fx-background-color: #DCDCDC;" text="Gerar" />
-                        <JFXButton fx:id="btnSalvar" buttonType="RAISED" layoutX="163.0" layoutY="382.0" prefHeight="47.0" prefWidth="59.0" style="-fx-background-radius: 15; -fx-background-color: #DCDCDC;" text="Salvar" />
-                        <JFXButton fx:id="btnCancelar" buttonType="RAISED" layoutX="254.0" layoutY="382.0" prefHeight="47.0" prefWidth="77.0" style="-fx-background-radius: 15; -fx-background-color: #DCDCDC;" text="Cancelar" />
-                        <JFXButton fx:id="btnElimina" buttonType="RAISED" layoutX="362.0" layoutY="382.0" prefHeight="47.0" prefWidth="77.0" style="-fx-background-radius: 15; -fx-background-color: #DCDCDC;" text="Eliminar" />
+                        <JFXButton fx:id="btnSalvar" buttonType="RAISED" layoutX="163.0" layoutY="382.0" onAction="#limpa" prefHeight="47.0" prefWidth="59.0" style="-fx-background-radius: 15; -fx-background-color: #DCDCDC;" text="Limpar" />
                         <JFXTextField fx:id="txtSemestre" layoutX="214.0" layoutY="90.0" prefHeight="25.0" prefWidth="370.0" />
                         <Separator layoutX="40.0" layoutY="6.0" orientation="VERTICAL" prefHeight="364.0" prefWidth="8.0" />
-                        <Separator layoutX="726.0" layoutY="6.0" orientation="VERTICAL" prefHeight="372.0" prefWidth="8.0" />
+                        <Separator layoutX="728.0" layoutY="6.0" orientation="VERTICAL" prefHeight="299.0" prefWidth="6.0" />
                         <Separator layoutX="44.0" layoutY="5.0" prefHeight="1.0" prefWidth="686.0" />
-                        <Separator layoutX="44.0" layoutY="377.0" prefHeight="3.0" prefWidth="685.0" />
+                        <Separator layoutX="44.0" layoutY="380.0" prefHeight="0.0" prefWidth="567.0" />
                      </children>
                   </AnchorPane>
             </content>

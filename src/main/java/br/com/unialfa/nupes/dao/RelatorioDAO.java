@@ -12,6 +12,7 @@ import br.com.unialfa.nupes.entity.Aluno;
 import br.com.unialfa.nupes.entity.Banca;
 import br.com.unialfa.nupes.entity.Declaracao;
 import br.com.unialfa.nupes.entity.Professor;
+import br.com.unialfa.nupes.exception.CampoNomeBancaVazioException;
 
 public class RelatorioDAO {
 	static private int id;
@@ -67,7 +68,7 @@ public class RelatorioDAO {
 
 	}
 
-	public List<Banca> listaBanca() throws SQLException {
+	public List<Banca> listaBanca() throws SQLException,CampoNomeBancaVazioException {
 		List<Banca> banca = new ArrayList<>();
 		PreparedStatement stmt = null;
 		Connection conn = ModuloConexao.GetConnection();
